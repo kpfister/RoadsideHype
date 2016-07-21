@@ -36,6 +36,9 @@ class MainViewController: UIViewController {
         if let currentUser = UserController.sharedInstance.currentUser {
             // Run any code we need to with the current logged in user
         } else {
+//            presentViewController(UserTableViewController, animated: true, completion: { 
+//                <#code#>
+//            })
             // Since there is not a user, we want to present the UserTVC so the user can create an account
         }
     }

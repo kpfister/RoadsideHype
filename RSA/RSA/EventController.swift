@@ -60,15 +60,29 @@ class EventController {
     
     //MARK: - Helper Fetches
     
-   /*
-    func fetchRecords() {
+   
+    func fetchEventRecords(type: String, completion: (() -> Void)?) {
+        var predicate = NSPredicate(format: "NOT(recordID IN %@)")
+        predicate = NSPredicate(value: true)
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: { (record) in
+            let _ = Event(record: record)
+            self.saveContext()
+            }) { (records, error) in
+                if error != nil {
+                    print("Error! Unable to fetch Event records")
+                }
+                if let completion = completion {
+                    completion()
+                }
+        }
         
     }
     
-    func pushChangedToCloudKit() {
+    func pushChangedToCloudKit(event: Event, completion: ((success: Bool, error: NSError?) -> Void)?) {
+        guard let eventRecord = event.cloudKitRecord else {return}
+        cloudKitManager.saveRecords([eventRecord], perRecordCompletion: nil, completion: nil)
         
     }
- */
     
     //MARK: Subscriptions
     

@@ -72,10 +72,14 @@ class UserController {
     
     func updateUser(user: User) {
         // An updated user should be passed into this method
+        saveContext()
+        
         
         // Update user in core data TODO: Get back to Nathan on how this should be implemented
         
         // With the user, call cloudKitManager.modifyRecords() // (This will update our user in CloudKit)
+        guard let cloudKitRecord = user.cloudKitRecord else { return }
+        cloudKitManager.modifyRecords([cloudKitRecord], perRecordCompletion: nil, completion: nil)
     }
     
     func deleteUser(user: User) {
@@ -84,8 +88,12 @@ class UserController {
             moc.deleteObject(user)
             saveContext()
         }
-        cloudKitManager.deleteRecordWithID(<#T##recordID: CKRecordID##CKRecordID#>) { (recordID, error) in
-            <#code#>
+        
+        guard let cloudKitRecord = user.cloudKitRecord else {
+            return
+        }
+        cloudKitManager.deleteRecordWithID(cloudKitRecord.recordID) { (recordID, error) in
+            
         }
         
         // Remove user from managed object context
@@ -123,9 +131,11 @@ class UserController {
         }
     }
     
-//       func pushChangedToCloudKit(completion: ((success: Bool, error: NSError?)->Void)?) {
-//        
-//    }
+    func pushChangedToCloudKit(user: User, completion: ((success: Bool, error: NSError?)->Void)?) {
+        guard let userRecord = user.cloudKitRecord else { return }
+        cloudKitManager.saveRecords([userRecord], perRecordCompletion: nil, completion: nil)
+        
+    }
     
     
     //MARK: Subscriptions

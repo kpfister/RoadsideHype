@@ -51,6 +51,7 @@ class Event: SyncableObject, CloudKitManagedObject  {
         self.recordIDData = NSKeyedArchiver.archivedDataWithRootObject(record.recordID)
         self.recordName = record.recordID.recordName        
     }
+    
 }
 
 
