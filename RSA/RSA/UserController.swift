@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import CloudKit
+import UIKit
+import CoreData
 
 class UserController {
     
@@ -14,6 +17,9 @@ class UserController {
     
     var isSynching: Bool = false
     
+    var currentUser: User?
+    
+    static let sharedInstance = UserController()
     
     init() {
         
@@ -25,16 +31,42 @@ class UserController {
             }
         }
         
+        // Grab current user from cloudkit
+        cloudKitManager.fetchLoggedInUserRecord { (record, error) in
+            guard let record = record else {
+                return
+            }
+            self.currentUser = User(record: record)
+        }
     }
     // Youre CRUD Methods go here.
     
-    func createUser(username: String, userImage: String, userAboutMe: String, phoneNumber: String, rangeToTravel: Float, latitude: Float, longtitude: Float) {
+    func createUser(username: String, userAboutMe: String, phoneNumber: String, rangeToTravel: Float, latitude: Float, longtitude: Float, image: UIImage) {
+        // Create NSdata from image
+        guard let data = UIImageJPEGRepresentation(image, 0.8)
+            else {return}
         
         // Create user
+        let user = User(photo: data, username: username, phoneNumber: phoneNumber, longtitude: longtitude, rangeToTravel: rangeToTravel, userAboutMe: userAboutMe, latitude: latitude)
+        
         // Save context(This will save it to core data)
+        saveContext()
+        
         // NeXT Step add user to CloudKit
-        // Use user.cloudKitRecord to save that record to CloudKit by calling cloudKitManager.saveRecord()
-        // Call user.update(record) to add the recordID to the user
+        if let userCloudKitRecord = user.cloudKitRecord {
+            
+            // Use user.cloudKitRecord to save that record to CloudKit by calling cloudKitManager.saveRecord()
+            cloudKitManager.saveRecord(userCloudKitRecord, completion: { (record, error) in
+                if let record = record {
+                    
+                    // Call user.update(record) to add the recordID to the user
+                    user.update(record)
+                }
+            })
+        }
+        
+        
+        
     }
     
     
@@ -47,6 +79,15 @@ class UserController {
     }
     
     func deleteUser(user: User) {
+        
+        if let moc = user.managedObjectContext {
+            moc.deleteObject(user)
+            saveContext()
+        }
+        cloudKitManager.deleteRecordWithID(<#T##recordID: CKRecordID##CKRecordID#>) { (recordID, error) in
+            <#code#>
+        }
+        
         // Remove user from managed object context
         // Once the user is removed from the MOC, save MOC
         // Then call cloudKitManager.deleteRecordWithID()
@@ -63,36 +104,41 @@ class UserController {
     
     //MARK: - Helper Fetches
     
-    /* TODO: Talk to Alan about whether or not these are needed
-     func synchedRecords() {
-     
-     }
-     
-     func unsyncedRecords() {
-     
-     }
-     
-     //MARK: - Sync
-     func performFullSync() {
-     
-     }
-     
-     func fetchRecords() {
-     
-     }
-     
-     func pushChangedToCloudKit() {
-     
-     }
-     */
+    
+    
+    func fetchRecords(type: String, completion: (()-> Void)?) {
+        var predicate = NSPredicate(format: "NOT(recordID IN %@)")
+        predicate = NSPredicate(value: true)
+        
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: { (record) in
+            let _ = User(record: record)
+            self.saveContext()
+        }) { (records, error) in
+            if error != nil {
+                print("Error! unable to fetch user records")
+            }
+            if let completion = completion{
+                completion()
+            }
+        }
+    }
+    
+//       func pushChangedToCloudKit(completion: ((success: Bool, error: NSError?)->Void)?) {
+//        
+//    }
+    
     
     //MARK: Subscriptions
     
     func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
         let predicate = NSPredicate(value: true)
         
-//        cloudKitManager.subscribe(<#T##type: String##String#>, predicate: <#T##NSPredicate#>, subscriptionID: <#T##String#>, contentAvailable: <#T##Bool#>, options: <#T##CKSubscriptionOptions#>, completion: <#T##((subscription: CKSubscription?, error: NSError?) -> Void)?##((subscription: CKSubscription?, error: NSError?) -> Void)?##(subscription: CKSubscription?, error: NSError?) -> Void#>)
-        
+        cloudKitManager.subscribe("User", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, options: .FiresOnRecordCreation) { (subscription, error) in
+            if let completion = completion {
+                let success = subscription != nil
+                completion(success: success, error: error)
+            }
+        }
     }
     
     

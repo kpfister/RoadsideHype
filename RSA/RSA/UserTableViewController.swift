@@ -11,10 +11,15 @@ import UIKit
 class UserTableViewController: UITableViewController {
     //MARK: Outlets
     
+    @IBOutlet weak var userImageOutlet: UIImageView!
     
+    @IBOutlet weak var usernameTextField: UITextField!
     
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     
+    @IBOutlet weak var rangeToTravelPickerView: UIPickerView!
     
+    @IBOutlet weak var setPrimaryLocationButton: UIButton!
     //MARK: Actions
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
@@ -23,7 +28,12 @@ class UserTableViewController: UITableViewController {
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
+        
     }
+    
+    @IBAction func setPrimaryLocationButtonTapped(sender: AnyObject) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,16 +50,16 @@ class UserTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+//
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

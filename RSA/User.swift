@@ -13,9 +13,11 @@ import UIKit
 
 class User: SyncableObject, CloudKitManagedObject {
     
+    private let userKey = "User"
     
     
-    convenience init(photo: NSData, username: String, phoneNumber: String, longtitude: NSNumber, rangeToTravel: NSNumber, userAboutMe: String, userImage: String, latitude: NSNumber, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
+    
+    convenience init(photo: NSData, username: String, phoneNumber: String, longtitude: NSNumber, rangeToTravel: NSNumber, userAboutMe: String, latitude: NSNumber, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         guard let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context) else {
             fatalError()
         }
@@ -25,7 +27,6 @@ class User: SyncableObject, CloudKitManagedObject {
         self.longtitude = longtitude
         self.latitude = latitude
         self.rangeToTravel = rangeToTravel
-        self.userImage = userImage
         self.photoData = photo
         self.recordName = self.nameForManagedObject()
         //MARK: TODO change name for manage obj
@@ -64,7 +65,6 @@ class User: SyncableObject, CloudKitManagedObject {
         record["longtitude"] = longtitude
         record["latitude"] = latitude
         record["rangeToTravel"] = rangeToTravel
-        record["userImage"] = userImage
         record["photoData"] = photoData
         
         

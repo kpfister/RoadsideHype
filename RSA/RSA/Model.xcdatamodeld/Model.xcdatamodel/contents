@@ -19,12 +19,11 @@
         <attribute name="photoData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="rangeToTravel" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="userAboutMe" attributeType="String" syncable="YES"/>
-        <attribute name="userImage" attributeType="String" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Event" positionX="-54" positionY="63" width="128" height="120"/>
         <element name="SyncableObject" positionX="-45" positionY="90" width="128" height="90"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

@@ -60,36 +60,7 @@ class EventController {
     
     //MARK: - Helper Fetches
     
-    /* Talk with Alan Barf about whether or not you need these
-    func synchedRecords(type: String) -> [CloudKitManagedObject] {
-        
-        let fetchRequest = NSFetchRequest(entityName: type)
-        let predicate = NSPredicate(format: "recordIDData != nil")
-        
-        let results = (try? Stack.sharedStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [CloudKitManagedObject] ?? []
-        
-        return results
-        
-    }
-    
-    func unsyncedRecords(type: String) -> [CloudKitManagedObject] {
-        
-        let fetchrequest = NSFetchRequest(entityName: type)
-        let predicate = NSPredicate(format: "recordIDData == nil")
-        
-        fetchrequest.predicate = predicate
-        
-        let results = (try? Stack.sharedStack.managedObjectContext.executeFetchRequest(fetchrequest)) as? [CloudKitManagedObject] ?? []
-        
-        return results
-        
-    }
-    
-    //MARK: - Sync
-    func performFullSync() {
-        
-    }
-    
+   /*
     func fetchRecords() {
         
     }

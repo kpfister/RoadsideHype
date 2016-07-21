@@ -33,7 +33,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let currentUser = UserController.sharedInstance.currentUser {
+            // Run any code we need to with the current logged in user
+        } else {
+            // Since there is not a user, we want to present the UserTVC so the user can create an account
+        }
     }
 
     override func didReceiveMemoryWarning() {
