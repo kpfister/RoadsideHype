@@ -35,6 +35,7 @@ class MainViewController: UIViewController {
 
         if let currentUser = UserController.sharedInstance.currentUser {
             // Run any code we need to with the current logged in user
+            print("There is a user logged in")
         } else {
 //            presentViewController(UserTableViewController, animated: true, completion: { 
 //                <#code#>

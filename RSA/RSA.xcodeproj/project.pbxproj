@@ -32,6 +32,7 @@
 		759FB9A91D3EA1780000A473 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */; };
 		759FB9AA1D3EA1780000A473 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FB9A81D3EA1780000A473 /* Event.swift */; };
 		759FB9AE1D3FE5A60000A473 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FB9AD1D3FE5A60000A473 /* EventController.swift */; };
+		75CABC311D42B6C40074F142 /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CABC301D42B6C40074F142 /* PhotoSelectorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		759FB9A81D3EA1780000A473 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		759FB9AD1D3FE5A60000A473 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		75CABC301D42B6C40074F142 /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,16 +119,19 @@
 			children = (
 				750B15121D36B51E0093B211 /* MainViewController.swift */,
 				750B15101D36B4F90093B211 /* UserTableViewController.swift */,
+				75CABC301D42B6C40074F142 /* PhotoSelectorViewController.swift */,
 				750B15151D36D26D0093B211 /* RequestHelpViewController.swift */,
 				750B15171D36D29A0093B211 /* InviteInformationViewController.swift */,
 				759FB9A51D3E9D3F0000A473 /* EventNotificationTableViewController.swift */,
 			);
 			name = "View Controllers";
+			path = RSA;
 			sourceTree = "<group>";
 		};
 		754847DC1D3552D700F10FDC = {
 			isa = PBXGroup;
 			children = (
+				750B15141D36B5220093B211 /* View Controllers */,
 				759506651D38317200865EAC /* CloudKit.framework */,
 				759506631D38293500865EAC /* Model */,
 				759506531D380F5D00865EAC /* Model Controllers */,
@@ -153,7 +158,6 @@
 			children = (
 				759506641D38316B00865EAC /* RSA.entitlements */,
 				7595066B1D3832DA00865EAC /* Protocols */,
-				750B15141D36B5220093B211 /* View Controllers */,
 			);
 			path = RSA;
 			sourceTree = "<group>";
@@ -367,6 +371,7 @@
 				750B15111D36B4FA0093B211 /* UserTableViewController.swift in Sources */,
 				7595066D1D38330B00865EAC /* Stack.swift in Sources */,
 				754847E91D3552D700F10FDC /* AppDelegate.swift in Sources */,
+				75CABC311D42B6C40074F142 /* PhotoSelectorViewController.swift in Sources */,
 				759FB9A61D3E9D3F0000A473 /* EventNotificationTableViewController.swift in Sources */,
 				759506611D38292A00865EAC /* SyncableObject+CoreDataProperties.swift in Sources */,
 				759506521D380F4800865EAC /* UserController.swift in Sources */,

@@ -19,7 +19,7 @@ class User: SyncableObject, CloudKitManagedObject {
     
     convenience init(photo: NSData, username: String, phoneNumber: String, longtitude: NSNumber, rangeToTravel: NSNumber, userAboutMe: String, latitude: NSNumber, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         guard let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context) else {
-            fatalError()
+            fatalError("Could not initialize User")
         }
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         self.username = username

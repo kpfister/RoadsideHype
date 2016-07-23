@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  RSA
 //
-//  Created by Karl Pfister on 7/21/16.
+//  Created by Karl Pfister on 7/22/16.
 //  Copyright © 2016 Karl Pfister. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

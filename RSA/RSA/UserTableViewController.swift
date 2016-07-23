@@ -11,13 +11,15 @@ import UIKit
 class UserTableViewController: UITableViewController {
     //MARK: Outlets
     
-    @IBOutlet weak var userImageOutlet: UIImageView!
+    var user: User?
+    var image: UIImage?
+    
+    @IBOutlet weak var userAboutMeTextView: UITextView!
     
     @IBOutlet weak var usernameTextField: UITextField!
     
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    @IBOutlet weak var rangeToTravelPickerView: UIPickerView!
     
     @IBOutlet weak var setPrimaryLocationButton: UIButton!
     //MARK: Actions
@@ -27,8 +29,27 @@ class UserTableViewController: UITableViewController {
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
         
+        if let userImage = image, username = usernameTextField.text where username.characters.count > 0, let userAboutMe = userAboutMeTextView.text where userAboutMe.characters.count > 0, let phoneNumber = phoneNumberTextField.text where phoneNumber.characters.count > 0 {
+            if let user = user {
+                // Update existing user
+                UserController.sharedInstance.updateUser(user)
+            } else {
+                //TODO: Come back and fix the defualt values for locations.
+                UserController.sharedInstance.createUser(username, userAboutMe: userAboutMe, phoneNumber: phoneNumber, rangeToTravel: 0.0, latitude: 0.0, longtitude: 0.0, image: userImage)
+                print("User created")
+                // Create new user
+            }
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            // TODO: Bring up alert controller asking the user to make sure they filled out all of the fields
+        }
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        // This is fixing a bug with my text view.
+        userAboutMeTextView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     @IBAction func setPrimaryLocationButtonTapped(sender: AnyObject) {
@@ -36,6 +57,10 @@ class UserTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let user = UserController.sharedInstance.currentUser {
+            self.user = user
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,70 +75,24 @@ class UserTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-//
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toPhotoSelector" {
+            if let destinationVC = segue.destinationViewController as? PhotoSelecterViewController {
+                destinationVC.delegate = self
+            }
+        }
     }
-    */
+    
 
+}
+extension UserTableViewController: PhotoSelectViewControllerDelegate {
+    func photoSelectViewControllerSelected(image: UIImage) {
+        self.image = image
+    }
 }

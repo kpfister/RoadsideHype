@@ -24,6 +24,11 @@ class RequestHelpViewController: UIViewController {
     }
     
     @IBAction func submitRequestForHelpButtonTapped(sender: AnyObject) {
+        
+//        let helpSummary = helpSummaryTextView.text, where helpSummary.characters.count > 0
+        // Send a notification to all users
+        
+        
     }
    
     

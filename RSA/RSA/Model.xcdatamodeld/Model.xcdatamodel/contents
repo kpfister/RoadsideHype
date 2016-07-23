@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
-    <entity name="Event" representedClassName=".Event" syncable="YES">
+    <entity name="Event" representedClassName=".Event" parentEntity="SyncableObject" syncable="YES">
         <attribute name="eventCreationDate" attributeType="Date" syncable="YES"/>
         <attribute name="eventLatitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="eventLongtitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -12,7 +12,7 @@
         <attribute name="recordName" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="User" representedClassName=".User" syncable="YES">
+    <entity name="User" representedClassName=".User" parentEntity="SyncableObject" syncable="YES">
         <attribute name="latitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longtitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="phoneNumber" attributeType="String" syncable="YES"/>
