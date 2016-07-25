@@ -51,7 +51,7 @@ class UserTableViewController: UITableViewController {
             }
             dismissViewControllerAnimated(true, completion: nil)
         } else {
-            let alertController = UIAlertController(title: "Oops!", message: "Looks like som important fields were left blank.", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Oops!", message: "Looks like some important fields were left blank.", preferredStyle: .Alert)
             
             let dissmissAction = UIAlertAction(title: "Dismiss", style: .Default, handler: { (_) in
 
@@ -79,6 +79,7 @@ class UserTableViewController: UITableViewController {
             usernameTextField.text = user.username
             userAboutMeTextView.text = user.userAboutMe
             phoneNumberTextField.text = user.phoneNumber
+            
             //TODO: Fix this. The view should see that a person already has a user and replace the fields.
         }
     }
@@ -92,6 +93,7 @@ class UserTableViewController: UITableViewController {
         if segue.identifier == "toPhotoSelector" {
             if let destinationVC = segue.destinationViewController as? PhotoSelecterViewController {
                 destinationVC.delegate = self
+                destinationVC.profileImage = UserController.sharedInstance.currentUser?.photo
             }
         }
     }

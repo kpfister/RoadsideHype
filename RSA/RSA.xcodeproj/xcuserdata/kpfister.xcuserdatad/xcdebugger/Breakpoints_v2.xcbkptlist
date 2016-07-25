@@ -52,12 +52,12 @@
                   moduleName = "RSA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/CloudKitManager.swift"
-                  timestampString = "491173593.373845"
+                  timestampString = "491175874.386428"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
                   endingLineNumber = "206"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "27">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "RSA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/CloudKitManager.swift"
-                  timestampString = "491173593.373964"
+                  timestampString = "491175874.386629"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "208"
                   endingLineNumber = "208"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "27">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -13,13 +13,15 @@ class PhotoSelecterViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
-    
+    var profileImage: UIImage?
     
     weak var delegate: PhotoSelectViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let profileImage = profileImage {
+            imageView.image = profileImage
+        }
         // Do any additional setup after loading the view.
     }
     

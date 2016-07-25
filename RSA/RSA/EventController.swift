@@ -18,6 +18,9 @@ class EventController {
     
     var events = [Event]()
     
+    
+    static let sharedInstance = EventController()
+    
     init() {
         self.cloudKitManager = CloudKitManager()
         
