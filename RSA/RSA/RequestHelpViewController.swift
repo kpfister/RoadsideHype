@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CloudKit
 
 class RequestHelpViewController: UIViewController {
+    
+    var events: [Event] = []
     
     //MARK: Outlets
     
@@ -25,9 +28,44 @@ class RequestHelpViewController: UIViewController {
     
     @IBAction func submitRequestForHelpButtonTapped(sender: AnyObject) {
         
-//        let helpSummary = helpSummaryTextView.text, where helpSummary.characters.count > 0
-        // Send a notification to all users
+//        let helpSummary = helpSummaryTextView.text
         
+        // Okay, when someone presses request help I want my app to send a push notification to all users. That push notification should show the EventNotificationView. The fields in that view should display all the users information that sent the request.
+        let database = CKContainer.defaultContainer().publicCloudDatabase
+        database.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
+            if error == nil {
+                if let subscriptions = subscriptions {
+                    for subscription in subscriptions {
+                        database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) in
+                            if error != nil {
+                                //TODO add an alert telling the user there was a issue.
+                                print(error!.localizedDescription)
+                            }
+                        })
+                    }
+                    for event in self.events {
+                        let predicate = NSPredicate(format: "event = %@", event)
+                        let subscription = CKSubscription(recordType: "Event", predicate: predicate, options: .FiresOnRecordCreation)
+                        
+                        let notificiation = CKNotificationInfo()
+                        notificiation.alertBody = "Help! A user needs your help!"
+                        notificiation.soundName = UILocalNotificationDefaultSoundName
+                        
+                        subscription.notificationInfo = notificiation
+                        
+                        database.saveSubscription(subscription, completionHandler: { (result, error) in
+                            if error != nil {
+                                print(error!.localizedDescription)
+                            }
+                        })
+                    }
+                }
+            }
+            else {
+                // more error handling
+                print(error!.localizedDescription)
+            }
+        }
         
     }
    

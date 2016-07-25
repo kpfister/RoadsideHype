@@ -10,6 +10,8 @@ import UIKit
 
 class EventNotificationTableViewController: UITableViewController {
     
+    var events: [Event] = []
+    
     //MARK: Outlets
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -33,6 +35,7 @@ class EventNotificationTableViewController: UITableViewController {
     @IBAction func callUserButtonTapped(sender: AnyObject) {
         
     }
+    
     
     
 

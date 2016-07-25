@@ -17,15 +17,17 @@ class User: SyncableObject, CloudKitManagedObject {
     
     
     
-    convenience init(photo: NSData, username: String, phoneNumber: String, longtitude: NSNumber, rangeToTravel: NSNumber, userAboutMe: String, latitude: NSNumber, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
+    convenience init(timestamp: NSDate = NSDate(), photo: NSData, username: String, phoneNumber: String, longtitude: NSNumber, rangeToTravel: NSNumber, userAboutMe: String, latitude: NSNumber, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         guard let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context) else {
             fatalError("Could not initialize User")
         }
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         self.username = username
+        self.userAboutMe = userAboutMe
         self.phoneNumber = phoneNumber
         self.longtitude = longtitude
         self.latitude = latitude
+        self.timestamp = timestamp
         self.rangeToTravel = rangeToTravel
         self.photoData = photo
         self.recordName = self.nameForManagedObject()
@@ -65,7 +67,7 @@ class User: SyncableObject, CloudKitManagedObject {
         record["longtitude"] = longtitude
         record["latitude"] = latitude
         record["rangeToTravel"] = rangeToTravel
-        record["photoData"] = photoData
+        record["photoData"] = CKAsset(fileURL: temporaryPhotoURL)
         
         
         return record

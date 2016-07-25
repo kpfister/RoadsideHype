@@ -17,7 +17,12 @@ class UserController {
     
     var isSynching: Bool = false
     
-    var currentUser: User?
+    var currentUser: User? {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        let results = (try? Stack.sharedStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [User] ?? []
+        return results.first!
+
+    }
     
     static let sharedInstance = UserController()
     
@@ -30,15 +35,9 @@ class UserController {
                 print("Succesfully subscribed to new events.")
             }
         }
-        
-        // Grab current user from cloudkit
-        cloudKitManager.fetchLoggedInUserRecord { (record, error) in
-            guard let record = record else {
-                return
-            }
-            self.currentUser = User(record: record)
-        }
     }
+    
+    
     // Youre CRUD Methods go here.
     
     func createUser(username: String, userAboutMe: String, phoneNumber: String, rangeToTravel: Float, latitude: Float, longtitude: Float, image: UIImage) {

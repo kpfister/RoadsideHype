@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CloudKit
 
 class UserTableViewController: UITableViewController {
     //MARK: Outlets
     
     var user: User?
     var image: UIImage?
+    
+    @IBOutlet weak var userImageView: UIView!
     
     @IBOutlet weak var userAboutMeTextView: UITextView!
     
@@ -22,6 +25,7 @@ class UserTableViewController: UITableViewController {
     
     
     @IBOutlet weak var setPrimaryLocationButton: UIButton!
+    //TODO This will be called when i add in mapkit
     //MARK: Actions
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
@@ -32,6 +36,7 @@ class UserTableViewController: UITableViewController {
         
         if let userImage = image, username = usernameTextField.text where username.characters.count > 0, let userAboutMe = userAboutMeTextView.text where userAboutMe.characters.count > 0, let phoneNumber = phoneNumberTextField.text where phoneNumber.characters.count > 0 {
             if let user = user {
+                print("user is logged in")
                 // Update existing user
                 UserController.sharedInstance.updateUser(user)
             } else {
@@ -39,10 +44,20 @@ class UserTableViewController: UITableViewController {
                 UserController.sharedInstance.createUser(username, userAboutMe: userAboutMe, phoneNumber: phoneNumber, rangeToTravel: 0.0, latitude: 0.0, longtitude: 0.0, image: userImage)
                 print("User created")
                 // Create new user
+                // Now that user is created I want to subscribe them to every Event. This will change for Version 2.
+                UserController.sharedInstance.subscribeToNewEvents({ (success, error) in
+                    print("Subscribed to new events")
+                })
             }
             dismissViewControllerAnimated(true, completion: nil)
         } else {
-            // TODO: Bring up alert controller asking the user to make sure they filled out all of the fields
+            let alertController = UIAlertController(title: "Oops!", message: "Looks like som important fields were left blank.", preferredStyle: .Alert)
+            
+            let dissmissAction = UIAlertAction(title: "Dismiss", style: .Default, handler: { (_) in
+
+            })
+            alertController.addAction(dissmissAction)
+            presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
@@ -53,6 +68,7 @@ class UserTableViewController: UITableViewController {
     }
     
     @IBAction func setPrimaryLocationButtonTapped(sender: AnyObject) {
+        //TODO: Add functionality to request and save the users perfered location
     }
     
     override func viewDidLoad() {
@@ -60,21 +76,12 @@ class UserTableViewController: UITableViewController {
         
         if let user = UserController.sharedInstance.currentUser {
             self.user = user
+            usernameTextField.text = user.username
+            userAboutMeTextView.text = user.userAboutMe
+            phoneNumberTextField.text = user.phoneNumber
+            //TODO: Fix this. The view should see that a person already has a user and replace the fields.
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
 
 
     
@@ -88,9 +95,8 @@ class UserTableViewController: UITableViewController {
             }
         }
     }
-    
-
 }
+
 extension UserTableViewController: PhotoSelectViewControllerDelegate {
     func photoSelectViewControllerSelected(image: UIImage) {
         self.image = image
