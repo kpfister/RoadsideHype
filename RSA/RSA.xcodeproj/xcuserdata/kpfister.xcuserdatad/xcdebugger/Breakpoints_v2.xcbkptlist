@@ -52,7 +52,7 @@
                   moduleName = "RSA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/CloudKitManager.swift"
-                  timestampString = "491175874.386428"
+                  timestampString = "491240200.0733"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "206"
@@ -67,7 +67,7 @@
                   moduleName = "RSA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/CloudKitManager.swift"
-                  timestampString = "491175874.386629"
+                  timestampString = "491240200.073529"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "208"
@@ -75,6 +75,22 @@
                   offsetFromSymbolStart = "27">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Event.swift"
+            timestampString = "491237919.292679"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "Event"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

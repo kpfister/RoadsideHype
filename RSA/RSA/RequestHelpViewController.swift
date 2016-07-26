@@ -45,7 +45,7 @@ class RequestHelpViewController: UIViewController {
                         database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) in
                             if error != nil {
                                 //TODO add an alert telling the user there was a issue.
-                                print(error!.localizedDescription)
+                                print("\(error!.localizedDescription) Error fetching all the subscriptions with ID")
                             }
                         })
                     }
@@ -61,7 +61,7 @@ class RequestHelpViewController: UIViewController {
                         
                         database.saveSubscription(subscription, completionHandler: { (result, error) in
                             if error != nil {
-                                print(error!.localizedDescription)
+                                print("\(error!.localizedDescription) Errorr saving subscription")
                             }
                         })
                     }

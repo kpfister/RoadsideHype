@@ -212,41 +212,18 @@
                         <viewControllerLayoutGuide type="top" id="rMo-MQ-Hbn"/>
                         <viewControllerLayoutGuide type="bottom" id="YD7-Gx-9sn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vcF-hr-TaJ">
+                    <view key="view" contentMode="scaleToFill" id="vcF-hr-TaJ" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H8-A7-7wZ">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="requestButtonUnderImageTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="QhF-6a-tYl"/>
-                                    <segue destination="YXH-YB-6lI" kind="show" id="Yqu-GO-Qnz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-9T-7lM">
-                                <rect key="frame" x="149" y="444" width="301" height="30"/>
-                                <state key="normal" title="Request Help!"/>
-                                <connections>
-                                    <action selector="requestHelpButtonTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="9D2-eP-lUD"/>
-                                    <segue destination="YXH-YB-6lI" kind="show" id="Kmu-j0-FFS"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-Uy-PGj">
-                                <rect key="frame" x="149" y="165" width="301" height="271"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="301" id="RMU-0t-qNw"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sy-cf-VhT">
-                                <rect key="frame" x="320" y="64" width="280" height="49"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sy-cf-VhT" userLabel="User Image and Button">
+                                <rect key="frame" x="513" y="72" width="67" height="67"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultuser copy" translatesAutoresizingMaskIntoConstraints="NO" id="i0I-0N-Ywq">
-                                        <rect key="frame" x="0.0" y="0.0" width="53" height="49"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultuser copy" translatesAutoresizingMaskIntoConstraints="NO" id="i0I-0N-Ywq">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeF-ff-yQ2">
-                                        <rect key="frame" x="8" y="11" width="30" height="30"/>
-                                        <state key="normal" title="Tap"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeF-ff-yQ2">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
                                         <connections>
                                             <action selector="userButtonUnderImageTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="1tf-7d-cF0"/>
                                             <segue destination="mYV-AE-uVi" kind="presentation" id="Bfs-Lg-Qr7"/>
@@ -254,22 +231,65 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="i0I-0N-Ywq" firstAttribute="top" secondItem="BeF-ff-yQ2" secondAttribute="top" id="L2J-in-6ab"/>
+                                    <constraint firstAttribute="bottom" secondItem="BeF-ff-yQ2" secondAttribute="bottom" id="Rjd-Wc-er7"/>
+                                    <constraint firstAttribute="trailing" secondItem="i0I-0N-Ywq" secondAttribute="trailing" id="WVZ-Rf-hgf"/>
+                                    <constraint firstItem="BeF-ff-yQ2" firstAttribute="trailing" secondItem="i0I-0N-Ywq" secondAttribute="trailing" id="flV-ZP-Yso"/>
+                                    <constraint firstItem="i0I-0N-Ywq" firstAttribute="leading" secondItem="6sy-cf-VhT" secondAttribute="leading" id="ixQ-ry-cVt"/>
+                                    <constraint firstItem="i0I-0N-Ywq" firstAttribute="top" secondItem="6sy-cf-VhT" secondAttribute="top" id="j67-UL-IqG"/>
+                                    <constraint firstItem="BeF-ff-yQ2" firstAttribute="bottom" secondItem="i0I-0N-Ywq" secondAttribute="bottom" id="jNy-54-IvD"/>
+                                    <constraint firstItem="i0I-0N-Ywq" firstAttribute="leading" secondItem="BeF-ff-yQ2" secondAttribute="leading" id="wpa-Fg-yM4"/>
+                                </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-qt-nUJ" userLabel="Request Help Image and Button">
+                                <rect key="frame" x="149" y="151" width="301" height="299"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-Uy-PGj">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="299"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H8-A7-7wZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="299"/>
+                                        <connections>
+                                            <action selector="requestButtonUnderImageTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="QhF-6a-tYl"/>
+                                            <segue destination="YXH-YB-6lI" kind="show" id="Yqu-GO-Qnz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="301" id="MiH-My-dJl"/>
+                                    <constraint firstItem="7H8-A7-7wZ" firstAttribute="leading" secondItem="xLo-qt-nUJ" secondAttribute="leading" id="Q6I-3D-Pah"/>
+                                    <constraint firstAttribute="height" constant="299" id="UL1-Wq-B7p"/>
+                                    <constraint firstAttribute="bottom" secondItem="e3G-Uy-PGj" secondAttribute="bottom" id="V19-iP-86n"/>
+                                    <constraint firstItem="7H8-A7-7wZ" firstAttribute="top" secondItem="xLo-qt-nUJ" secondAttribute="top" id="VHj-Xa-5vf"/>
+                                    <constraint firstAttribute="trailing" secondItem="e3G-Uy-PGj" secondAttribute="trailing" id="VlW-vH-fIs"/>
+                                    <constraint firstItem="e3G-Uy-PGj" firstAttribute="top" secondItem="xLo-qt-nUJ" secondAttribute="top" id="bo4-UJ-hal"/>
+                                    <constraint firstAttribute="trailing" secondItem="7H8-A7-7wZ" secondAttribute="trailing" id="ful-gH-xpQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="7H8-A7-7wZ" secondAttribute="bottom" id="tu1-62-p9P"/>
+                                    <constraint firstItem="e3G-Uy-PGj" firstAttribute="leading" secondItem="xLo-qt-nUJ" secondAttribute="leading" id="uHA-hp-SMS"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-9T-7lM">
+                                <rect key="frame" x="149" y="457" width="301" height="30"/>
+                                <state key="normal" title="Request Help!"/>
+                                <connections>
+                                    <action selector="requestHelpButtonTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="9D2-eP-lUD"/>
+                                    <segue destination="YXH-YB-6lI" kind="show" id="Kmu-j0-FFS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="centerX" secondItem="vcF-hr-TaJ" secondAttribute="centerX" id="7O1-fK-JMI"/>
-                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="trailing" secondItem="e5R-9T-7lM" secondAttribute="trailing" id="8Kd-bs-Eak"/>
-                            <constraint firstAttribute="trailing" secondItem="6sy-cf-VhT" secondAttribute="trailing" id="AYQ-Pc-x8y"/>
-                            <constraint firstItem="e5R-9T-7lM" firstAttribute="top" secondItem="e3G-Uy-PGj" secondAttribute="bottom" constant="8" symbolic="YES" id="GAO-h2-jRu"/>
-                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="centerY" secondItem="vcF-hr-TaJ" secondAttribute="centerY" id="Ihj-Z3-yGP"/>
-                            <constraint firstItem="YD7-Gx-9sn" firstAttribute="top" secondItem="6sy-cf-VhT" secondAttribute="bottom" constant="487" id="VsJ-7M-BBi"/>
-                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="top" secondItem="rMo-MQ-Hbn" secondAttribute="bottom" constant="101" id="ejo-xX-Lqe"/>
-                            <constraint firstItem="7H8-A7-7wZ" firstAttribute="centerX" secondItem="e5R-9T-7lM" secondAttribute="centerX" id="feO-eB-QES"/>
-                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="leading" secondItem="e5R-9T-7lM" secondAttribute="leading" id="j9k-tC-lOX"/>
-                            <constraint firstItem="6sy-cf-VhT" firstAttribute="leading" secondItem="vcF-hr-TaJ" secondAttribute="leading" constant="320" id="kHu-YT-U9b"/>
-                            <constraint firstItem="6sy-cf-VhT" firstAttribute="top" secondItem="rMo-MQ-Hbn" secondAttribute="bottom" id="oKA-Z0-HOE"/>
-                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="centerY" secondItem="7H8-A7-7wZ" secondAttribute="centerY" id="uyr-th-HgA"/>
+                            <constraint firstItem="e5R-9T-7lM" firstAttribute="top" secondItem="xLo-qt-nUJ" secondAttribute="bottom" constant="7" id="0iC-j5-NGb"/>
+                            <constraint firstItem="YD7-Gx-9sn" firstAttribute="top" secondItem="6sy-cf-VhT" secondAttribute="bottom" constant="461" id="BhF-Vk-mhg"/>
+                            <constraint firstItem="xLo-qt-nUJ" firstAttribute="centerX" secondItem="vcF-hr-TaJ" secondAttribute="centerX" id="GNN-5X-sGS"/>
+                            <constraint firstItem="6sy-cf-VhT" firstAttribute="trailing" secondItem="vcF-hr-TaJ" secondAttribute="trailingMargin" id="OTf-CZ-KgS"/>
+                            <constraint firstItem="xLo-qt-nUJ" firstAttribute="trailing" secondItem="e5R-9T-7lM" secondAttribute="trailing" id="Xh8-qG-qOC"/>
+                            <constraint firstItem="xLo-qt-nUJ" firstAttribute="centerY" secondItem="vcF-hr-TaJ" secondAttribute="centerY" id="aYg-ib-2sH"/>
+                            <constraint firstItem="6sy-cf-VhT" firstAttribute="top" secondItem="rMo-MQ-Hbn" secondAttribute="bottom" constant="8" symbolic="YES" id="gbM-fp-bG3"/>
+                            <constraint firstItem="6sy-cf-VhT" firstAttribute="leading" secondItem="vcF-hr-TaJ" secondAttribute="leading" constant="513" id="jso-Sm-OMj"/>
+                            <constraint firstItem="xLo-qt-nUJ" firstAttribute="leading" secondItem="e5R-9T-7lM" secondAttribute="leading" id="wSV-4g-XSN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NU8-Kj-DUH"/>
@@ -281,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azu-fu-XSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="445"/>
+            <point key="canvasLocation" x="1300" y="453"/>
         </scene>
         <!--Invite Information View Controller-->
         <scene sceneID="lCP-ub-gAI">
