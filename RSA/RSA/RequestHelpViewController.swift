@@ -28,7 +28,9 @@ class RequestHelpViewController: UIViewController {
     
     @IBAction func submitRequestForHelpButtonTapped(sender: UIButton) {
         
-        EventController.sharedInstance.createEvent(helpSummaryTextView.text, eventLongtitude: 0, eventLatitude: 0, eventCreationDate: NSDate()) { 
+        EventController.sharedInstance.createEvent(helpSummaryTextView.text, eventLongtitude: 0, eventLatitude: 0, eventCreationDate: NSDate()) {
+        
+            
         
             print("event created")
         }
@@ -36,6 +38,8 @@ class RequestHelpViewController: UIViewController {
 //        let helpSummary = helpSummaryTextView.text
         
         // Okay, when someone presses request help I want my app to send a push notification to all users. That push notification should show the EventNotificationView. The fields in that view should display all the users information that sent the request.
+        
+        // TODO - Move this to the MC ... 
         
         let database = CKContainer.defaultContainer().publicCloudDatabase
         database.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in

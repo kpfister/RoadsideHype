@@ -23,6 +23,7 @@ class Event: SyncableObject, CloudKitManagedObject  {
         self.eventLatitude = eventLatitude
         self.eventLongtitude = eventLongtitude
         self.eventSummary = eventSummary
+        self.recordName = self.nameForManagedObject()
     }
     
     var recordType: String = "Event"
@@ -53,14 +54,4 @@ class Event: SyncableObject, CloudKitManagedObject  {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
 

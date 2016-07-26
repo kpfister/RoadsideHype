@@ -80,7 +80,7 @@
 		759506651D38317200865EAC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		759506671D3831CC00865EAC /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitManager.swift; path = ../CloudKitManager.swift; sourceTree = "<group>"; };
 		759506691D3832CE00865EAC /* CloudKitManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManagedObject.swift; sourceTree = "<group>"; };
-		7595066C1D38330B00865EAC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		7595066C1D38330B00865EAC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = RSA/Stack.swift; sourceTree = "<group>"; };
 		759FB9A51D3E9D3F0000A473 /* EventNotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationTableViewController.swift; sourceTree = "<group>"; };
 		759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		759FB9A81D3EA1780000A473 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -125,18 +125,14 @@
 				759FB9A51D3E9D3F0000A473 /* EventNotificationTableViewController.swift */,
 			);
 			name = "View Controllers";
-			path = RSA;
 			sourceTree = "<group>";
 		};
 		754847DC1D3552D700F10FDC = {
 			isa = PBXGroup;
 			children = (
-				750B15141D36B5220093B211 /* View Controllers */,
-				759506651D38317200865EAC /* CloudKit.framework */,
-				759506631D38293500865EAC /* Model */,
-				759506531D380F5D00865EAC /* Model Controllers */,
-				754847E71D3552D700F10FDC /* RSA */,
-				759506561D38103400865EAC /* Misc */,
+				75B19AC41D47C76D00DA2C91 /* Sources */,
+				759506561D38103400865EAC /* Resoources */,
+				75B19AC61D47C82300DA2C91 /* Frameworks */,
 				754847FC1D3552D800F10FDC /* RSATests */,
 				754848071D3552D800F10FDC /* RSAUITests */,
 				754847E61D3552D700F10FDC /* Products */,
@@ -151,15 +147,6 @@
 				754848041D3552D800F10FDC /* RSAUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		754847E71D3552D700F10FDC /* RSA */ = {
-			isa = PBXGroup;
-			children = (
-				759506641D38316B00865EAC /* RSA.entitlements */,
-				7595066B1D3832DA00865EAC /* Protocols */,
-			);
-			path = RSA;
 			sourceTree = "<group>";
 		};
 		754847FC1D3552D800F10FDC /* RSATests */ = {
@@ -186,38 +173,30 @@
 				759506511D380F4800865EAC /* UserController.swift */,
 				759506541D380F7E00865EAC /* InvitationController.swift */,
 				759FB9AD1D3FE5A60000A473 /* EventController.swift */,
-				759506671D3831CC00865EAC /* CloudKitManager.swift */,
 			);
 			name = "Model Controllers";
-			path = RSA;
 			sourceTree = "<group>";
 		};
-		759506561D38103400865EAC /* Misc */ = {
+		759506561D38103400865EAC /* Resoources */ = {
 			isa = PBXGroup;
 			children = (
+				75B19AC81D47C8CE00DA2C91 /* Storyboards */,
 				7595064E1D3805FC00865EAC /* Model.xcdatamodeld */,
-				7595066C1D38330B00865EAC /* Stack.swift */,
-				754847E81D3552D700F10FDC /* AppDelegate.swift */,
-				754847EC1D3552D700F10FDC /* Main.storyboard */,
+				759506641D38316B00865EAC /* RSA.entitlements */,
 				754847EF1D3552D700F10FDC /* Assets.xcassets */,
-				754847F11D3552D700F10FDC /* LaunchScreen.storyboard */,
 				754847F41D3552D700F10FDC /* Info.plist */,
 			);
-			name = Misc;
+			name = Resoources;
 			path = RSA;
 			sourceTree = "<group>";
 		};
 		759506631D38293500865EAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				759506571D38292A00865EAC /* User+CoreDataProperties.swift */,
-				759506581D38292A00865EAC /* User.swift */,
-				759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */,
-				759FB9A81D3EA1780000A473 /* Event.swift */,
-				752115C51D46774000BF32D9 /* SyncableObject+CoreDataProperties.swift */,
-				7595065C1D38292A00865EAC /* SyncableObject.swift */,
+				75B19AC51D47C79500DA2C91 /* Core Data */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		7595066B1D3832DA00865EAC /* Protocols */ = {
@@ -226,6 +205,59 @@
 				759506691D3832CE00865EAC /* CloudKitManagedObject.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		75B19AC41D47C76D00DA2C91 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				754847E81D3552D700F10FDC /* AppDelegate.swift */,
+				759506631D38293500865EAC /* Model */,
+				759506531D380F5D00865EAC /* Model Controllers */,
+				7595066B1D3832DA00865EAC /* Protocols */,
+				75B19AC71D47C84100DA2C91 /* Other Controllers */,
+				750B15141D36B5220093B211 /* View Controllers */,
+			);
+			name = Sources;
+			path = RSA;
+			sourceTree = "<group>";
+		};
+		75B19AC51D47C79500DA2C91 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				7595066C1D38330B00865EAC /* Stack.swift */,
+				759506571D38292A00865EAC /* User+CoreDataProperties.swift */,
+				759506581D38292A00865EAC /* User.swift */,
+				759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */,
+				759FB9A81D3EA1780000A473 /* Event.swift */,
+				752115C51D46774000BF32D9 /* SyncableObject+CoreDataProperties.swift */,
+				7595065C1D38292A00865EAC /* SyncableObject.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		75B19AC61D47C82300DA2C91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				759506651D38317200865EAC /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75B19AC71D47C84100DA2C91 /* Other Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				759506671D3831CC00865EAC /* CloudKitManager.swift */,
+			);
+			name = "Other Controllers";
+			sourceTree = "<group>";
+		};
+		75B19AC81D47C8CE00DA2C91 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				754847EC1D3552D700F10FDC /* Main.storyboard */,
+				754847F11D3552D700F10FDC /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

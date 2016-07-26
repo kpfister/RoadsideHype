@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
             // Run any code we need to with the current logged in user
             print("There is a user logged in")
         } else {
+            //MARK: todo
 //            presentViewController(UserTableViewController, animated: true, completion: { 
 //                <#code#>
 //            })

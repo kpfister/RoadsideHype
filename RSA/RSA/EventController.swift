@@ -35,7 +35,9 @@ class EventController {
     
     func createEvent(eventSummary: String, eventLongtitude: Float, eventLatitude: Float, eventCreationDate: NSDate, completion: (() -> Void)?) {
         
-        let event = Event()
+        let event = Event(eventCreationDate: eventCreationDate, eventLatitude: eventLatitude, eventLongtitude: eventLongtitude, eventSummary: eventSummary)
+        
+        saveContext()
         
         if let completion = completion {
             completion()

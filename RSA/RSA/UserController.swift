@@ -20,7 +20,7 @@ class UserController {
     var currentUser: User? {
         let fetchRequest = NSFetchRequest(entityName: "User")
         let results = (try? Stack.sharedStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [User] ?? []
-        return results.first!
+        return results.first ?? nil
 
     }
     
