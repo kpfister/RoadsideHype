@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreData
 import CloudKit
 
@@ -50,6 +51,46 @@ class EventController {
                 }
             })
         }
+    }
+    
+    func sendPushNotificationFromEventCreation() {
+        
+        let database = CKContainer.defaultContainer().publicCloudDatabase
+        database.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
+            if error == nil {
+                if let subscriptions = subscriptions {
+                    for subscription in subscriptions {
+                        database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) in
+                            if error != nil {
+                                //TODO add an alert telling the user there was a issue.
+                                print("\(error!.localizedDescription) Error fetching all the subscriptions with ID")
+                            }
+                        })
+                    }
+                    for event in self.events {
+                        let predicate = NSPredicate(format: "Event = %@", event)
+                        let subscription = CKSubscription(recordType: "Event", predicate: predicate, options: .FiresOnRecordCreation)
+                        
+                        let notificiation = CKNotificationInfo()
+                        notificiation.alertBody = "Help! A user needs your help!"
+                        notificiation.soundName = UILocalNotificationDefaultSoundName
+                        
+                        subscription.notificationInfo = notificiation
+                        
+                        database.saveSubscription(subscription, completionHandler: { (result, error) in
+                            if error != nil {
+                                print("\(error!.localizedDescription) Errorr saving subscription")
+                            }
+                        })
+                    }
+                }
+            }
+            else {
+                // more error handling
+                print(error!.localizedDescription)
+            }
+        }
+
     }
     
     // I dont think we want an update or a delete function as you cannnot update or delete the event.

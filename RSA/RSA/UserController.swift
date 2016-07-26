@@ -66,8 +66,14 @@ class UserController {
     }
     
     
-    func updateUser(user: User) {
+    func updateUser(user: User, username: String, phone: String, aboutMe: String, image: NSData) {
         // An updated user should be passed into this method
+        
+        user.username = username
+        user.phoneNumber = phone
+        user.userAboutMe = aboutMe
+        user.photoData = image
+        
         saveContext()
         
         

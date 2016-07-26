@@ -25,7 +25,9 @@ class UserTableViewController: UITableViewController {
     
     
     @IBOutlet weak var setPrimaryLocationButton: UIButton!
-    //TODO This will be called when i add in mapkit
+    //TODO This will be called when I add in mapkit
+    
+    
     //MARK: Actions
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
@@ -38,7 +40,8 @@ class UserTableViewController: UITableViewController {
             if let user = user {
                 print("user is logged in")
                 // Update existing user
-                UserController.sharedInstance.updateUser(user)
+                UserController.sharedInstance.updateUser(user, username: username, phone: phoneNumber, aboutMe: userAboutMe, image: UIImageJPEGRepresentation(userImage, 0.8)!)
+                
             } else {
                 //TODO: Come back and fix the defualt values for locations.
                 UserController.sharedInstance.createUser(username, userAboutMe: userAboutMe, phoneNumber: phoneNumber, rangeToTravel: 0.0, latitude: 0.0, longtitude: 0.0, image: userImage)
@@ -79,8 +82,6 @@ class UserTableViewController: UITableViewController {
             usernameTextField.text = user.username
             userAboutMeTextView.text = user.userAboutMe
             phoneNumberTextField.text = user.phoneNumber
-            
-            //TODO: Fix this. The view should see that a person already has a user and replace the fields.
         }
     }
 
