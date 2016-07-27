@@ -142,8 +142,10 @@ class UserController {
     }
     
     func fetchUserRecords(type: String, completion: ((records:[CKRecord]) -> Void)?) {
-        var predicate = NSPredicate(format: "NOT(recordID IN %@)")
-        predicate = NSPredicate(value: true)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        var predicate = NSPredicate(format: "NOT(recordID IN %@)")
+//        let predicate = NSPredicate(value: true)
+        var predicate = NSPredicate(value: true)
         UserController.sharedInstance.cloudKitManager.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: { (record) in
             
         }) { (records, error) in
@@ -153,6 +155,7 @@ class UserController {
             if let completion = completion, records = records {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(records: records)
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 })
             }
         }

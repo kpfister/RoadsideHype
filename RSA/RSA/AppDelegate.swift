@@ -64,12 +64,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let eventAlert = UILocalNotification()
+        
         eventAlert.alertTitle = "Place holder for title"
         eventAlert.alertBody = "Place for body"
         eventAlert.fireDate = NSDate()
         
         application.scheduleLocalNotification(eventAlert)
+        print("Alert has been sent... maybe... prolly not." )
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+//        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotificationTableViewController") as! EventNotificationTableViewController
+//        
+//        let navigationController = self.window?.rootViewController as! UINavigationController
+//        
+//        navigationController.pushViewController(destinationViewController, animated: false, completion: nil)
+        
 }
+    
 }
         
 //        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotificationTableViewController") as!EventNotificationTableViewController
