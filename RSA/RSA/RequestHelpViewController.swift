@@ -12,6 +12,10 @@ import CloudKit
 class RequestHelpViewController: UIViewController {
     
     var events: [Event] = []
+    var users: [User] = []
+    
+    
+    // I need to fetch all the records of type user and set it to my users array.
     
     //MARK: Outlets
     
@@ -28,14 +32,26 @@ class RequestHelpViewController: UIViewController {
     
     @IBAction func submitRequestForHelpButtonTapped(sender: UIButton) {
         
-        EventController.sharedInstance.createEvent(helpSummaryTextView.text, eventLongtitude: 0, eventLatitude: 0, eventCreationDate: NSDate()) {
-            
-            print("event created")
+        //        EventController.sharedInstance.createEvent(helpSummaryTextView.text, eventLongtitude: 0, eventLatitude: 0, eventCreationDate: NSDate()) {
+        //
+        //            print("event created")
+        
+        UserController.sharedInstance.fetchUserRecords("User") { (records) in
+            let submitEventAlertController = UIAlertController(title: "Ask for help?", message: "Press Ok to request help from \(records.count) user in your area.", preferredStyle: .Alert)
+            submitEventAlertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
+                EventController.sharedInstance.createEvent(self.helpSummaryTextView.text, eventLongtitude: 0, eventLatitude: 0, eventCreationDate: NSDate()) {
+                    
+                    print("event created")
+                }
+                
+            }))
+            self.presentViewController(submitEventAlertController, animated: true, completion: nil)
         }
-        
-        EventController.sharedInstance.sendPushNotificationFromEventCreation()
-        
     }
+    
+    
+    
+    
     
     
     override func viewDidLoad() {

@@ -17,6 +17,8 @@ class UserController {
     
     var isSynching: Bool = false
     
+
+    
     var currentUser: User? {
         let fetchRequest = NSFetchRequest(entityName: "User")
         let results = (try? Stack.sharedStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [User] ?? []
@@ -30,11 +32,11 @@ class UserController {
         
         self.cloudKitManager = CloudKitManager()
         
-        subscribeToNewEvents { (success, error) in
-            if success {
-                print("Succesfully subscribed to new events.")
-            }
-        }
+//        subscribeToNewEvents { (success, error) in
+//            if success {
+//                print("Succesfully subscribed to new events.")
+//            }
+//        }
     }
     
     
@@ -139,13 +141,30 @@ class UserController {
         
     }
     
+    func fetchUserRecords(type: String, completion: ((records:[CKRecord]) -> Void)?) {
+        var predicate = NSPredicate(format: "NOT(recordID IN %@)")
+        predicate = NSPredicate(value: true)
+        UserController.sharedInstance.cloudKitManager.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: { (record) in
+            
+        }) { (records, error) in
+            if error != nil {
+                print("Error! Unable to fetch User records")
+            }
+            if let completion = completion, records = records {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(records: records)
+                })
+            }
+        }
+    }
+    
     
     //MARK: Subscriptions
     
     func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
         let predicate = NSPredicate(value: true)
         
-        cloudKitManager.subscribe("User", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, options: .FiresOnRecordCreation) { (subscription, error) in
+        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, alertBody: "Alan Rules!", desiredKeys: nil, options: .FiresOnRecordCreation) { (subscription, error) in
             if let completion = completion {
                 let success = subscription != nil
                 completion(success: success, error: error)

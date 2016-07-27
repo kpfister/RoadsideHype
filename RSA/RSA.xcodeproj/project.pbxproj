@@ -32,6 +32,7 @@
 		759FB9A91D3EA1780000A473 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */; };
 		759FB9AA1D3EA1780000A473 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FB9A81D3EA1780000A473 /* Event.swift */; };
 		759FB9AE1D3FE5A60000A473 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FB9AD1D3FE5A60000A473 /* EventController.swift */; };
+		75B19ACA1D491AC300DA2C91 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B19AC91D491AC300DA2C91 /* UserInformation.swift */; };
 		75CABC311D42B6C40074F142 /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CABC301D42B6C40074F142 /* PhotoSelectorViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		759FB9A71D3EA1780000A473 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		759FB9A81D3EA1780000A473 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		759FB9AD1D3FE5A60000A473 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		75B19AC91D491AC300DA2C91 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInformation.swift; path = ../UserInformation.swift; sourceTree = "<group>"; };
 		75CABC301D42B6C40074F142 /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 				759506511D380F4800865EAC /* UserController.swift */,
 				759506541D380F7E00865EAC /* InvitationController.swift */,
 				759FB9AD1D3FE5A60000A473 /* EventController.swift */,
+				75B19AC91D491AC300DA2C91 /* UserInformation.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				750B15181D36D29A0093B211 /* InviteInformationViewController.swift in Sources */,
+				75B19ACA1D491AC300DA2C91 /* UserInformation.swift in Sources */,
 				759FB9A91D3EA1780000A473 /* Event+CoreDataProperties.swift in Sources */,
 				750B15131D36B51E0093B211 /* MainViewController.swift in Sources */,
 				750B15111D36B4FA0093B211 /* UserTableViewController.swift in Sources */,

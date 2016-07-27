@@ -19,10 +19,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Push Notifications
         let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
         
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("\(deviceToken) They are registered")
+        
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+        UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -47,33 +57,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-        guard let notificationInfo = userInfo as? [String: NSObject] else { return }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let queryNotification = CKQueryNotification(fromRemoteNotificationDictionary: notificationInfo)
+        let eventAlert = UILocalNotification()
+        eventAlert.alertTitle = "Place holder for title"
+        eventAlert.alertBody = "Place for body"
+        eventAlert.fireDate = NSDate()
         
-        guard let recordID = queryNotification.recordID else { print ("No Record ID available from CKQueryNotification."); return }
-        
-        let cloudKitManager = CloudKitManager()
-        
-        cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
-            
-                        guard let record = record else { print("Unable to fetch CKRecord from Record ID"); return }
-            
-            switch record.recordType {
-                
-                case "User":
-                let _ = User(record: record)
-                case "Event":
-                let _ = Event(record: record)
-            default:
-                return
-            }
-            EventController.sharedInstance.saveContext()
-        }
-        completionHandler(UIBackgroundFetchResult.NoData)
-    }
+        application.scheduleLocalNotification(eventAlert)
 }
+}
+        
+//        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotificationTableViewController") as!EventNotificationTableViewController
+//        
+//        let navigationController = self.window?.rootViewController as! UINavigationController
+//        navigationController.pushViewController(destinationViewController, animated: false)
+//        
+//        guard let notificationInfo = userInfo as? [String: NSObject] else { return }
+//        
+//        let queryNotification = CKQueryNotification(fromRemoteNotificationDictionary: notificationInfo)
+//        
+//        guard let recordID = queryNotification.recordID else { print ("No Record ID available from CKQueryNotification."); return }
+//        
+//        let cloudKitManager = CloudKitManager()
+//        
+//        cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
+//            
+//                        guard let record = record else { print("Unable to fetch CKRecord from Record ID"); return }
+//            
+//            switch record.recordType {
+//                
+//                case "User":
+//                let _ = User(record: record)
+//                case "Event":
+//                let _ = Event(record: record)
+//            default:
+//                return
+//            }
+//            EventController.sharedInstance.saveContext()
+//        }
+//        completionHandler(UIBackgroundFetchResult.NewData)
+//        let view = EventNotificationTableViewController()
+//        view.presentViewController(view, animated: true, completion: nil)
+//    }}
+
+/*
+ func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+ 
+ println("didReceiveRemoteNotification")
+ 
+ let storyboard = UIStoryboard(name: "Main", bundle: nil)
+ 
+ let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("MessageViewController") as MessageViewController
+ 
+ let navigationController = self.window?.rootViewController as! UINavigationController
+ 
+ navigationController?.pushViewController(destinationViewController, animated: false, completion: nil)
+ 
+ }
+ */
 

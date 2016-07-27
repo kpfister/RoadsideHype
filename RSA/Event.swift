@@ -14,7 +14,7 @@ import UIKit
 
 class Event: SyncableObject, CloudKitManagedObject  {
 
-    convenience init (eventCreationDate: NSDate, eventLatitude: Float, eventLongtitude: Float, eventSummary: String, context:NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
+    convenience init (eventCreationDate: NSDate = NSDate(), eventLatitude: Float, eventLongtitude: Float, eventSummary: String, context:NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         guard let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context) else {
             fatalError("Unable to create event Entity")
         }
@@ -24,6 +24,7 @@ class Event: SyncableObject, CloudKitManagedObject  {
         self.eventLongtitude = eventLongtitude
         self.eventSummary = eventSummary
         self.recordName = self.nameForManagedObject()
+        self.timestamp = eventCreationDate
     }
     
     var recordType: String = "Event"

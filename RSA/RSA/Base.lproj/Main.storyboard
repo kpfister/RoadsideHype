@@ -71,24 +71,24 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="32" id="YmY-io-VrG">
-                                        <rect key="frame" x="0.0" y="275" width="600" height="32"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="33" id="YmY-io-VrG">
+                                        <rect key="frame" x="0.0" y="275" width="600" height="33"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmY-io-VrG" id="WqV-PK-b7N">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="31.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="32.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zye-VR-5MU">
-                                                    <rect key="frame" x="8" y="8" width="584" height="15.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="33"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkS-Dq-WTj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="112" height="15.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkS-Dq-WTj">
+                                                            <rect key="frame" x="0.0" y="6" width="112" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mDq-Mj-s1T">
-                                                            <rect key="frame" x="112" y="0.0" width="472" height="15.5"/>
+                                                            <rect key="frame" x="112" y="2" width="488" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
@@ -96,21 +96,21 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Zye-VR-5MU" secondAttribute="bottom" id="3Mw-nN-aKf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Zye-VR-5MU" secondAttribute="trailing" id="M1p-S7-WHA"/>
-                                                <constraint firstItem="Zye-VR-5MU" firstAttribute="leading" secondItem="WqV-PK-b7N" secondAttribute="leadingMargin" id="Mi6-ua-7NV"/>
-                                                <constraint firstItem="Zye-VR-5MU" firstAttribute="top" secondItem="WqV-PK-b7N" secondAttribute="topMargin" id="nIp-b7-L5L"/>
+                                                <constraint firstAttribute="bottom" secondItem="Zye-VR-5MU" secondAttribute="bottom" id="4Ao-5y-sIZ"/>
+                                                <constraint firstItem="Zye-VR-5MU" firstAttribute="leading" secondItem="WqV-PK-b7N" secondAttribute="leading" id="5Sj-YU-mTo"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zye-VR-5MU" secondAttribute="trailing" id="CgR-ee-hZM"/>
+                                                <constraint firstItem="Zye-VR-5MU" firstAttribute="top" secondItem="WqV-PK-b7N" secondAttribute="top" id="uo3-yT-FaP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="290" id="DzO-iK-IEP">
-                                        <rect key="frame" x="0.0" y="307" width="600" height="290"/>
+                                        <rect key="frame" x="0.0" y="308" width="600" height="290"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DzO-iK-IEP" id="umV-1u-Ac0">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="289.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xBV-YP-UMu">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xBV-YP-UMu">
                                                     <rect key="frame" x="8" y="8" width="584" height="274"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA0-ym-psd">
@@ -122,7 +122,7 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7f2-4d-5dv">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7f2-4d-5dv">
                                                             <rect key="frame" x="0.0" y="20" width="584" height="254"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azu-fu-XSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="455"/>
+            <point key="canvasLocation" x="1350" y="407"/>
         </scene>
         <!--Invite Information View Controller-->
         <scene sceneID="lCP-ub-gAI">
@@ -386,39 +386,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text"> Help, I need somebody
 Help, not just anybody
-Help, you know I need someone, help
-
-When I was younger (So much younger than) so much younger than today
-(I never needed) I never needed anybody's help in any way
-(Now) But now these days are gone (These days are gone), I'm not so self assured
-(I know I've found) Now I find I've changed my mind and opened up the doors
-
-Help me if you can, I'm feeling down
-And I do appreciate you being 'round
-Help me get my feet back on the ground
-Won't you please, please help me
-
-(Now) And now my life has changed in oh so many ways
-(My independence) My independence seems to vanish in the haze
-(But) But every now (Every now and then) and then I feel so insecure
-(I know that I) I know that I just need you like I've never done before
-
-Help me if you can, I'm feeling down
-And I do appreciate you being 'round
-Help me get my feet back on the ground
-Won't you please, please help me
-
-When I was younger so much younger than today
-I never needed anybody's help in any way
-(But) But now these days are gone (These days are gone), I'm not so self assured
-(I know I've found) Now I find I've changed my mind and opened up the doors
-
-Help me if you can, I'm feeling down
-And I do appreciate you being round
-Help me, get my feet back on the ground
-Won't you please, please help me, help me, help me, ooh</string>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" enablesReturnKeyAutomatically="YES"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-VQ-2xw">
                                 <rect key="frame" x="285" y="85" width="30" height="30"/>

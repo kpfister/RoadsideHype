@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        EventController.sharedInstance.checkForSubscription()
 
         if let currentUser = UserController.sharedInstance.currentUser {
             // Run any code we need to with the current logged in user

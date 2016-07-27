@@ -48,7 +48,7 @@ class UserTableViewController: UITableViewController {
                 print("User created")
                 // Create new user
                 // Now that user is created I want to subscribe them to every Event. This will change for Version 2.
-                UserController.sharedInstance.subscribeToNewEvents({ (success, error) in
+                EventController.sharedInstance.subscribeToNewEvents({ (success, error) in
                     print("Subscribed to new events")
                 })
             }

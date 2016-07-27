@@ -25,11 +25,11 @@ class EventController {
     init() {
         self.cloudKitManager = CloudKitManager()
         
-        subscribeToNewEvents { (success, error) in
-            if success {
-                print("Succesfully subscribed to new events.")
-            }
-        }
+//        subscribeToNewEvents { (success, error) in
+//            if success {
+//                print("Succesfully subscribed to new events.")
+//            }
+//        }
         
     }
     // Youre CRUD Methods go here.
@@ -53,45 +53,43 @@ class EventController {
         }
     }
     
-    func sendPushNotificationFromEventCreation() {
-        
-        let database = CKContainer.defaultContainer().publicCloudDatabase
-        database.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
-            if error == nil {
-                if let subscriptions = subscriptions {
-                    for subscription in subscriptions {
-                        database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) in
-                            if error != nil {
-                                //TODO add an alert telling the user there was a issue.
-                                print("\(error!.localizedDescription) Error fetching all the subscriptions with ID")
-                            }
-                        })
-                    }
-                    for event in self.events {
-                        let predicate = NSPredicate(format: "Event = %@", event)
-                        let subscription = CKSubscription(recordType: "Event", predicate: predicate, options: .FiresOnRecordCreation)
-                        
-                        let notificiation = CKNotificationInfo()
-                        notificiation.alertBody = "Help! A user needs your help!"
-                        notificiation.soundName = UILocalNotificationDefaultSoundName
-                        
-                        subscription.notificationInfo = notificiation
-                        
-                        database.saveSubscription(subscription, completionHandler: { (result, error) in
-                            if error != nil {
-                                print("\(error!.localizedDescription) Errorr saving subscription")
-                            }
-                        })
-                    }
-                }
-            }
-            else {
-                // more error handling
-                print(error!.localizedDescription)
-            }
-        }
-
-    }
+//    func sendPushNotificationFromEventCreation(event: Event) {
+//        
+//        cloudKitManager.fetchSubscriptions { (subscriptions, error) in
+//            if error == nil {
+//                if let subscriptions = subscriptions {
+//                    for subscription in subscriptions {
+//                        database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) in
+//                            if error != nil {
+//                                //TODO add an alert telling the user there was a issue.
+//                                print("\(error!.localizedDescription) Error fetching all the subscriptions with ID")
+//                            }
+//                        })
+//                    }
+//                    for event in self.events {
+//                        let predicate = NSPredicate(format: "Event = %@", event)
+//                        let subscription = CKSubscription(recordType: "Event", predicate: predicate, options: .FiresOnRecordCreation)
+//                        
+//                        let notificiation = CKNotificationInfo()
+//                        notificiation.alertBody = "Help! A user needs your help!"
+//                        notificiation.soundName = UILocalNotificationDefaultSoundName
+//                        
+//                        subscription.notificationInfo = notificiation
+//                        
+//                        database.saveSubscription(subscription, completionHandler: { (result, error) in
+//                            if error != nil {
+//                                print("\(error!.localizedDescription) Errorr saving subscription")
+//                            }
+//                        })
+//                    }
+//                }
+//            }
+//            else {
+//                // more error handling
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
     
     // I dont think we want an update or a delete function as you cannnot update or delete the event.
     
@@ -130,12 +128,25 @@ class EventController {
         
     }
     
+    func checkForSubscription() {
+//        cloudKitManager.unsubscribe("allPosts") { (subscriptionID, error) in
+//            
+//        }
+//        cloudKitManager.fetchSubscription("allEvents") { (subscription, error) in
+//            print(subscription)
+//        }
+//        cloudKitManager.fetchSubscriptions { (subscriptions, error) in
+//            
+//        }
+
+    }
+    
     //MARK: Subscriptions
     
     func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
         let predicate = NSPredicate(value: true)
         
-        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allPosts", contentAvailable: true, options: .FiresOnRecordCreation) { (subscribtion, error) in
+        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, options: .FiresOnRecordCreation) { (subscribtion, error) in
             
             if let completion = completion {
                 let success = subscribtion != nil

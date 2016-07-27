@@ -89,4 +89,6 @@ class User: SyncableObject, CloudKitManagedObject {
         
     }
     
-} //End of Class
+}
+
+//End of Class
