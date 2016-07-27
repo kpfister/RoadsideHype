@@ -182,6 +182,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Roadside" translatesAutoresizingMaskIntoConstraints="NO" id="9kK-6U-eel">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sy-cf-VhT" userLabel="User Image and Button">
                                 <rect key="frame" x="525" y="72" width="67" height="67"/>
                                 <subviews>
@@ -216,19 +219,25 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="301" id="LYD-p8-qh0"/>
                                     <constraint firstAttribute="height" constant="301" id="zHb-Qx-PA4"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-9T-7lM">
-                                <rect key="frame" x="149.5" y="457" width="301" height="30"/>
+                                <rect key="frame" x="239.5" y="457" width="120" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.68972210909999998" blue="0.065023203330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bS3-iI-hkB"/>
-                                    <constraint firstAttribute="width" constant="301" id="yIk-Wf-74b"/>
+                                    <constraint firstAttribute="width" constant="120" id="bna-31-EeN"/>
                                 </constraints>
-                                <state key="normal" title="Request Help!"/>
+                                <state key="normal" title="Request Help!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="12"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="requestHelpButtonTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="9D2-eP-lUD"/>
                                     <segue destination="YXH-YB-6lI" kind="show" id="Kmu-j0-FFS"/>
@@ -237,19 +246,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="e5R-9T-7lM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9kK-6U-eel" secondAttribute="bottom" constant="-143" id="854-rD-jfK"/>
                             <constraint firstAttribute="trailing" secondItem="6sy-cf-VhT" secondAttribute="trailing" constant="8" id="8yn-g6-N8E"/>
+                            <constraint firstItem="9kK-6U-eel" firstAttribute="leading" secondItem="vcF-hr-TaJ" secondAttribute="leading" id="AdD-DF-gpp"/>
+                            <constraint firstItem="e5R-9T-7lM" firstAttribute="top" secondItem="9kK-6U-eel" secondAttribute="bottom" constant="-143" id="H5N-jU-hOp"/>
                             <constraint firstItem="6sy-cf-VhT" firstAttribute="top" secondItem="rMo-MQ-Hbn" secondAttribute="bottom" constant="8" id="K96-U3-WzL"/>
+                            <constraint firstAttribute="trailing" secondItem="9kK-6U-eel" secondAttribute="trailing" id="PBS-Bd-Ls4"/>
                             <constraint firstItem="xLo-qt-nUJ" firstAttribute="centerY" secondItem="vcF-hr-TaJ" secondAttribute="centerY" id="VHG-QB-AsX"/>
                             <constraint firstItem="xLo-qt-nUJ" firstAttribute="centerX" secondItem="vcF-hr-TaJ" secondAttribute="centerX" id="Wda-BR-d9X"/>
                             <constraint firstItem="e5R-9T-7lM" firstAttribute="top" secondItem="xLo-qt-nUJ" secondAttribute="bottom" constant="6.5" id="jHP-eT-EHP"/>
+                            <constraint firstItem="9kK-6U-eel" firstAttribute="top" secondItem="rMo-MQ-Hbn" secondAttribute="bottom" id="jVk-sB-oPJ"/>
                             <constraint firstItem="e5R-9T-7lM" firstAttribute="centerX" secondItem="vcF-hr-TaJ" secondAttribute="centerX" id="sgI-8B-lkJ"/>
+                            <constraint firstItem="YD7-Gx-9sn" firstAttribute="top" secondItem="9kK-6U-eel" secondAttribute="bottom" id="ylQ-ws-um3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="H5N-jU-hOp"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="NU8-Kj-DUH"/>
+                    <navigationItem key="navigationItem" title="Motorescue" id="NU8-Kj-DUH"/>
                     <connections>
                         <outlet property="requestHelp" destination="e5R-9T-7lM" id="9F5-pU-45r"/>
                         <outlet property="requestHelpButtonUnderImage" destination="7H8-A7-7wZ" id="of6-1f-uMn"/>
                         <outlet property="userButtonUnderImage" destination="BeF-ff-yQ2" id="V7m-dt-GYJ"/>
+                        <outlet property="userImageAndbuttonView" destination="6sy-cf-VhT" id="h3I-jd-AcS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azu-fu-XSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -701,6 +722,7 @@ It's just as well my friend</string>
     </scenes>
     <resources>
         <image name="Phone" width="22" height="26"/>
+        <image name="Roadside" width="638" height="436"/>
         <image name="defaultuser copy" width="300" height="300"/>
         <image name="help" width="1024" height="1024"/>
     </resources>

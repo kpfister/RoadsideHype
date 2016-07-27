@@ -31,7 +31,7 @@ class RequestHelpViewController: UIViewController {
         let emergencyAlert = UIAlertController(title: "911", message: "Are you sure you want to call 911?", preferredStyle: .Alert)
         let dissmissAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         let call911Action = UIAlertAction(title: "Call 911", style: .Default) { (action) in
-            if let url = NSURL(string: "tel://911") {
+            if let url = NSURL(string: "tel://8019106718") {
                 UIApplication.sharedApplication().openURL(url)
             }
         }

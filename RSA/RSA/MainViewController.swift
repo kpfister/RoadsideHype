@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     
     //MARK: Outlets
     
+    @IBOutlet weak var userImageAndbuttonView: UIView!
+    
     @IBOutlet weak var requestHelpButtonUnderImage: UIButton!
     
     @IBOutlet weak var requestHelp: UIButton!
@@ -32,6 +34,24 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let view = UIView(frame: self.view.bounds)
+//        let image = UIImage(named: "Roadside")
+//        view.backgroundColor = UIColor(patternImage: image!)
+//        let blurEffect = UIBlurEffect(style: .ExtraLight)
+//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+//        visualEffectView.frame = self.view.bounds
+//        let imageView = UIImageView(frame: view.frame)
+//        imageView.image = UIImage(named: "Roadside")
+//        imageView.contentMode = .ScaleAspectFill
+//        view.addSubview(imageView)
+//        view.addSubview(visualEffectView)
+        
+        self.view.addSubview(view)
+        self.view.sendSubviewToBack(view)
+        
+        userImageAndbuttonView.layer.cornerRadius = userImageAndbuttonView.frame.width / 2
+        userImageAndbuttonView.clipsToBounds = true
         
         EventController.sharedInstance.checkForSubscription()
 
