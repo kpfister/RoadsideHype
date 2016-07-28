@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     
     //MARK: Outlets
     
-    @IBOutlet weak var userImageAndbuttonView: UIView!
+//    @IBOutlet weak var userImageAndbuttonView: UIView!
     
     @IBOutlet weak var requestHelpButtonUnderImage: UIButton!
     
@@ -50,8 +50,8 @@ class MainViewController: UIViewController {
         self.view.addSubview(view)
         self.view.sendSubviewToBack(view)
         
-        userImageAndbuttonView.layer.cornerRadius = userImageAndbuttonView.frame.width / 2
-        userImageAndbuttonView.clipsToBounds = true
+//        userImageAndbuttonView.layer.cornerRadius = userImageAndbuttonView.frame.width / 2
+//        userImageAndbuttonView.clipsToBounds = true
         
         EventController.sharedInstance.checkForSubscription()
 

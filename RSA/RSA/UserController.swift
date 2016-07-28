@@ -164,16 +164,16 @@ class UserController {
     
     //MARK: Subscriptions
     
-    func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
-        let predicate = NSPredicate(value: true)
-        
-        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, alertBody: "Alan Rules!", desiredKeys: nil, options: .FiresOnRecordCreation) { (subscription, error) in
-            if let completion = completion {
-                let success = subscription != nil
-                completion(success: success, error: error)
-            }
-        }
-    }
+//    func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
+//        let predicate = NSPredicate(value: true)
+//        
+//        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, alertBody: "Alan Rules!", desiredKeys: nil, options: .FiresOnRecordCreation) { (subscription, error) in
+//            if let completion = completion {
+//                let success = subscription != nil
+//                completion(success: success, error: error)
+//            }
+//        }
+//    }
     
     
     

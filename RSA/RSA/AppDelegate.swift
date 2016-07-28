@@ -13,12 +13,16 @@ import CloudKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    var cloudKitManager = CloudKitManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //Push Notifications
         let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        cloudKitManager.fetchSubscription("allEvents") { (subscription, error) in
+            print(subscription)
+        }
         
         
         // Override point for customization after application launch.
@@ -57,11 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-
+    
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        print(userInfo)
         
         let eventAlert = UILocalNotification()
         
@@ -71,37 +76,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.scheduleLocalNotification(eventAlert)
         print("Alert has been sent... maybe... prolly not." )
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-//        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotificationTableViewController") as! EventNotificationTableViewController
-//        
-//        let navigationController = self.window?.rootViewController as! UINavigationController
-//        
-//        navigationController.pushViewController(destinationViewController, animated: false, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-}
+                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotifVC")
+        self.window?.rootViewController = destinationViewController
+        self.window?.makeKeyAndVisible()
+        
+    }
     
 }
-        
+
 //        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotificationTableViewController") as!EventNotificationTableViewController
-//        
+//
 //        let navigationController = self.window?.rootViewController as! UINavigationController
 //        navigationController.pushViewController(destinationViewController, animated: false)
-//        
+//
 //        guard let notificationInfo = userInfo as? [String: NSObject] else { return }
-//        
+//
 //        let queryNotification = CKQueryNotification(fromRemoteNotificationDictionary: notificationInfo)
-//        
+//
 //        guard let recordID = queryNotification.recordID else { print ("No Record ID available from CKQueryNotification."); return }
-//        
+//
 //        let cloudKitManager = CloudKitManager()
-//        
+//
 //        cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
-//            
+//
 //                        guard let record = record else { print("Unable to fetch CKRecord from Record ID"); return }
-//            
+//
 //            switch record.recordType {
-//                
+//
 //                case "User":
 //                let _ = User(record: record)
 //                case "Event":

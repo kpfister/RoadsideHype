@@ -257,6 +257,24 @@ class CloudKitManager {
         }
     }
     
+    func subscribe2(type: String, predicate: NSPredicate, subscriptionID: String, alertBody: String? = nil, options: CKSubscriptionOptions, completion: ((subscription: CKSubscription?, error: NSError?) -> Void)?) {
+        
+        let subscription = CKSubscription(recordType: type, predicate: predicate, subscriptionID: subscriptionID, options: options)
+        
+        let notificationInfo = CKNotificationInfo()
+        notificationInfo.alertBody = alertBody
+
+        subscription.notificationInfo = notificationInfo
+        
+        publicDatabase.saveSubscription(subscription) { (subscription, error) in
+            
+            if let completion = completion {
+                completion(subscription: subscription, error: error)
+            }
+        }
+    }
+    
+    
     func unsubscribe(subscriptionID: String, completion: ((subscriptionID: String?, error: NSError?) -> Void)?) {
         
         publicDatabase.deleteSubscriptionWithID(subscriptionID) { (subscriptionID, error) in
