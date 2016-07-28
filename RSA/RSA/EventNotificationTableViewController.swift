@@ -10,7 +10,11 @@ import UIKit
 
 class EventNotificationTableViewController: UITableViewController {
     
-    var events: [Event] = []
+    var event: Event? {
+        didSet {
+            updateViews()
+        }
+    }
     
     //MARK: Outlets
     
@@ -49,25 +53,23 @@ class EventNotificationTableViewController: UITableViewController {
     }
     
     
-    
-
+    func updateViews() {
+        guard let event = event,
+        creator = event.creator else {
+            // Update views to be blank?
+            return
+        }
+        
+        userEventSummaryTextView.text = event.eventSummary
+        usernameLabel.text = creator.username
+        userPhoneNumber.text = creator.phoneNumber
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // Fetch current event
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        updateViews()
     }
 
     // MARK: - Table view data source

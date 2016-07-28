@@ -32,11 +32,6 @@ class UserController {
         
         self.cloudKitManager = CloudKitManager()
         
-//        subscribeToNewEvents { (success, error) in
-//            if success {
-//                print("Succesfully subscribed to new events.")
-//            }
-//        }
     }
     
     
@@ -143,9 +138,8 @@ class UserController {
     
     func fetchUserRecords(type: String, completion: ((records:[CKRecord]) -> Void)?) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//        var predicate = NSPredicate(format: "NOT(recordID IN %@)")
-//        let predicate = NSPredicate(value: true)
-        var predicate = NSPredicate(value: true)
+        
+        let predicate = NSPredicate(value: true)
         UserController.sharedInstance.cloudKitManager.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: { (record) in
             
         }) { (records, error) in
@@ -160,22 +154,6 @@ class UserController {
             }
         }
     }
-    
-    
-    //MARK: Subscriptions
-    
-//    func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
-//        let predicate = NSPredicate(value: true)
-//        
-//        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, alertBody: "Alan Rules!", desiredKeys: nil, options: .FiresOnRecordCreation) { (subscription, error) in
-//            if let completion = completion {
-//                let success = subscription != nil
-//                completion(success: success, error: error)
-//            }
-//        }
-//    }
-    
-    
     
     
     

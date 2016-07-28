@@ -222,20 +222,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-qt-nUJ" userLabel="Request Help Image and Button">
                                         <rect key="frame" x="0.0" y="50" width="580" height="406"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H8-A7-7wZ">
-                                                <rect key="frame" x="107" y="20" width="366" height="366"/>
-                                                <connections>
-                                                    <action selector="requestButtonUnderImageTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="QhF-6a-tYl"/>
-                                                    <segue destination="YXH-YB-6lI" kind="show" id="Yqu-GO-Qnz"/>
-                                                </connections>
-                                            </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-Uy-PGj">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Button" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-Uy-PGj">
                                                 <rect key="frame" x="107" y="20" width="366" height="366"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="e3G-Uy-PGj" secondAttribute="height" multiplier="1:1" id="7CF-d8-EEB"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="A1e-jb-pNd"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H8-A7-7wZ">
+                                                <rect key="frame" x="107" y="20" width="366" height="366"/>
+                                                <connections>
+                                                    <action selector="requestButtonUnderImageTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="QhF-6a-tYl"/>
+                                                    <segue destination="YXH-YB-6lI" kind="show" id="Yqu-GO-Qnz"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -767,10 +767,10 @@ It's just as well my friend</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Button" width="162" height="162"/>
         <image name="Phone" width="22" height="26"/>
         <image name="Roadside" width="638" height="436"/>
         <image name="defaultuser copy" width="300" height="300"/>
-        <image name="help" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yqu-GO-Qnz"/>

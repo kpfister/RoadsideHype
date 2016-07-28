@@ -65,85 +65,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-        guard let remoteNotificationDictionary = userInfo as? [String: NSObject] else {
-            return
-        }
+        guard let remoteNotificationDictionary = userInfo as? [String: NSObject] else { return }
         let cloudKitNotification = CKQueryNotification(fromRemoteNotificationDictionary: remoteNotificationDictionary)
-        guard let notificationInfo = cloudKitNotification.recordFields as? [String: String] else {
-            return
+        guard let recordID = cloudKitNotification.recordID else { return }
+        
+        let eventController = EventController.sharedInstance
+        eventController.retrieveEventForRecordID(recordID) { (event) in
+            // do whatever with this event
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                // show table view
+                
+                let eventAlert = UILocalNotification()
+                
+                eventAlert.alertTitle = "Place holder for title"
+                eventAlert.alertBody = "Place for body" // This is the local. This is what the user will see.
+                
+                application.presentLocalNotificationNow(eventAlert)
+                
+                print("Alert has been sent... maybe... prolly not." )
+                
+                // TODO: alert to show users that there was an event.
+                
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                guard let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotifVC") as? EventNotificationTableViewController else { return }
+                destinationViewController.modalPresentationStyle = .FullScreen
+                destinationViewController.event = event
+                
+                if let rootVC = self.window?.rootViewController {
+                    rootVC.presentViewController(destinationViewController, animated: true, completion: nil)
+                }
+            }
         }
-        
-        if let recordName = notificationInfo["recordName"] {
-            print(recordName)
-        }
-        
-        let eventAlert = UILocalNotification()
-        
-        eventAlert.alertTitle = "Place holder for title"
-        eventAlert.alertBody = "Place for body" // This is the local. This is what the user will see.
-        eventAlert.fireDate = NSDate()
-        
-        application.scheduleLocalNotification(eventAlert)
-        print("Alert has been sent... maybe... prolly not." )
-        
-        
-        // DID RECEIVE LOCAL NOTIFICATION SHOULD HANDLE THIS
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotifVC")
-        self.window?.rootViewController = destinationViewController
-        self.window?.makeKeyAndVisible()
-        
     }
     
 }
 
-//        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotificationTableViewController") as!EventNotificationTableViewController
-//
-//        let navigationController = self.window?.rootViewController as! UINavigationController
-//        navigationController.pushViewController(destinationViewController, animated: false)
-//
-//        guard let notificationInfo = userInfo as? [String: NSObject] else { return }
-//
-//        let queryNotification = CKQueryNotification(fromRemoteNotificationDictionary: notificationInfo)
-//
-//        guard let recordID = queryNotification.recordID else { print ("No Record ID available from CKQueryNotification."); return }
-//
-//        let cloudKitManager = CloudKitManager()
-//
-//        cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
-//
-//                        guard let record = record else { print("Unable to fetch CKRecord from Record ID"); return }
-//
-//            switch record.recordType {
-//
-//                case "User":
-//                let _ = User(record: record)
-//                case "Event":
-//                let _ = Event(record: record)
-//            default:
-//                return
-//            }
-//            EventController.sharedInstance.saveContext()
-//        }
-//        completionHandler(UIBackgroundFetchResult.NewData)
-//        let view = EventNotificationTableViewController()
-//        view.presentViewController(view, animated: true, completion: nil)
-//    }}
-
-/*
- func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
- 
- println("didReceiveRemoteNotification")
- 
- let storyboard = UIStoryboard(name: "Main", bundle: nil)
- 
- let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("MessageViewController") as MessageViewController
- 
- let navigationController = self.window?.rootViewController as! UINavigationController
- 
- navigationController?.pushViewController(destinationViewController, animated: false, completion: nil)
- 
- }
- */
 

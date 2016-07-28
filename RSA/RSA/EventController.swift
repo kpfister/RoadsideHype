@@ -19,17 +19,20 @@ class EventController {
     
     var events = [Event]()
     
+    var currentHelpRequestID: CKRecordID?
+    
+    // create a func to save a record id. that will take in the recordID from the notification and
     
     static let sharedInstance = EventController()
     
     init() {
         self.cloudKitManager = CloudKitManager()
         
-//        subscribeToNewEvents { (success, error) in
-//            if success {
-//                print("Succesfully subscribed to new events.")
-//            }
-//        }
+        //        subscribeToNewEvents { (success, error) in
+        //            if success {
+        //                print("Succesfully subscribed to new events.")
+        //            }
+        //        }
         
     }
     // Youre CRUD Methods go here.
@@ -53,43 +56,34 @@ class EventController {
         }
     }
     
-//    func sendPushNotificationFromEventCreation(event: Event) {
-//        
-//        cloudKitManager.fetchSubscriptions { (subscriptions, error) in
-//            if error == nil {
-//                if let subscriptions = subscriptions {
-//                    for subscription in subscriptions {
-//                        database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) in
-//                            if error != nil {
-//                                //TODO add an alert telling the user there was a issue.
-//                                print("\(error!.localizedDescription) Error fetching all the subscriptions with ID")
-//                            }
-//                        })
-//                    }
-//                    for event in self.events {
-//                        let predicate = NSPredicate(format: "Event = %@", event)
-//                        let subscription = CKSubscription(recordType: "Event", predicate: predicate, options: .FiresOnRecordCreation)
-//                        
-//                        let notificiation = CKNotificationInfo()
-//                        notificiation.alertBody = "Help! A user needs your help!"
-//                        notificiation.soundName = UILocalNotificationDefaultSoundName
-//                        
-//                        subscription.notificationInfo = notificiation
-//                        
-//                        database.saveSubscription(subscription, completionHandler: { (result, error) in
-//                            if error != nil {
-//                                print("\(error!.localizedDescription) Errorr saving subscription")
-//                            }
-//                        })
-//                    }
-//                }
-//            }
-//            else {
-//                // more error handling
-//                print(error!.localizedDescription)
-//            }
-//        }
-//    }
+    func retrieveEventForRecordID(recordID: CKRecordID, completion: (Event) -> Void) {
+        cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
+            if let error = error {
+                NSLog("Error fetching event for record ID \(recordID): \(error)")
+                return
+            }
+            
+            guard let record = record else { return }
+            
+            if let event = Event(record: record) {
+                completion(event)
+            }
+        }
+    }
+    
+    //
+    //    func retreiveRequestForHelpEvent(completion: (event: Event?) -> Void) {
+    //        // check for current event id
+    //
+    //        guard let currentHelpRequestID = currentHelpRequestID else { completion(event: nil); return }
+    //        // loads the event with the id from cloud kit
+    //        let record = CKRecord(recordType: "User") // TODO: Actually get record from CloudKit (look at Timeline)
+    //        let event = Event(record: record)
+    //        completion(event: event)
+    //        // call completion passing in the event
+    //        // EventNotificationTVC will have this method in the Veiw did load
+    //
+    //    }
     
     // I dont think we want an update or a delete function as you cannnot update or delete the event.
     
@@ -104,20 +98,20 @@ class EventController {
     
     //MARK: - Helper Fetches
     
-   
+    
     func fetchEventRecords(type: String, completion: (() -> Void)?) {
         var predicate = NSPredicate(format: "NOT(recordID IN %@)")
         predicate = NSPredicate(value: true)
         cloudKitManager.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: { (record) in
             let _ = Event(record: record)
             self.saveContext()
-            }) { (records, error) in
-                if error != nil {
-                    print("Error! Unable to fetch Event records")
-                }
-                if let completion = completion {
-                    completion()
-                }
+        }) { (records, error) in
+            if error != nil {
+                print("Error! Unable to fetch Event records")
+            }
+            if let completion = completion {
+                completion()
+            }
         }
         
     }
@@ -129,16 +123,16 @@ class EventController {
     }
     
     func checkForSubscription() {
-//        cloudKitManager.unsubscribe("allPosts") { (subscriptionID, error) in
-//            
-//        }
-//        cloudKitManager.fetchSubscription("allEvents") { (subscription, error) in
-//            print(subscription)
-//        }
-//        cloudKitManager.fetchSubscriptions { (subscriptions, error) in
-//            
-//        }
-
+        //        cloudKitManager.unsubscribe("allPosts") { (subscriptionID, error) in
+        //
+        //        }
+        //        cloudKitManager.fetchSubscription("allEvents") { (subscription, error) in
+        //            print(subscription)
+        //        }
+        //        cloudKitManager.fetchSubscriptions { (subscriptions, error) in
+        //
+        //        }
+        
     }
     
     //MARK: Subscriptions
@@ -146,20 +140,20 @@ class EventController {
     func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
         let predicate = NSPredicate(value: true)
         
-
+        
         cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, alertBody: "", desiredKeys: ["phoneNumber"], options: .FiresOnRecordCreation) { (subscription, error) in
             if let completion = completion {
                 let succcess = subscription != nil
                 completion(success: succcess, error: error)
             }
         }
-//        cloudKitManager.subscribe2("Event", predicate: predicate, subscriptionID: "allEvents", alertBody: "Placeholder for event body", options: .FiresOnRecordCreation) { (subscription, error) in
-//            if let completion = completion {
-//                let success = subscription != nil
-//                completion(success: success, error: error)
-//                
-//            }
-//        }
+        //        cloudKitManager.subscribe2("Event", predicate: predicate, subscriptionID: "allEvents", alertBody: "Placeholder for event body", options: .FiresOnRecordCreation) { (subscription, error) in
+        //            if let completion = completion {
+        //                let success = subscription != nil
+        //                completion(success: success, error: error)
+        //                
+        //            }
+        //        }
     }
     
     
