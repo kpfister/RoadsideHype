@@ -29,10 +29,22 @@ class EventNotificationTableViewController: UITableViewController {
     //MARK: Actions
     
     @IBAction func directionsToUserButtonTapped(sender: AnyObject) {
-        
+//        
+//            let emergencyAlert = UIAlertController(title: "Call User", message: "Are you sure you want to call the user that needs help?", preferredStyle: .Alert)
+//            let dissmissAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//            let call911Action = UIAlertAction(title: "Call", style: .Default) { (action) in
+//                if let url = NSURL(string: "tel://\(user.phonenumber)" {
+//                    UIApplication.sharedApplication().openURL(url)
+//                }
+//            }
+//            emergencyAlert.addAction(dissmissAction)
+//            emergencyAlert.addAction(call911Action)
+//            self.presentViewController(emergencyAlert, animated: true, completion: nil)
+    
     }
     
     @IBAction func callUserButtonTapped(sender: AnyObject) {
+        
         
     }
     
@@ -42,6 +54,9 @@ class EventNotificationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // Fetch current event
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

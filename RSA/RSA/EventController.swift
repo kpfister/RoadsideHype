@@ -146,14 +146,20 @@ class EventController {
     func subscribeToNewEvents(completion: ((success: Bool, error: NSError?)->Void)?) {
         let predicate = NSPredicate(value: true)
         
-        
-        cloudKitManager.subscribe2("Event", predicate: predicate, subscriptionID: "allEvents", alertBody: "Placeholder for event body", options: .FiresOnRecordCreation) { (subscription, error) in
+
+        cloudKitManager.subscribe("Event", predicate: predicate, subscriptionID: "allEvents", contentAvailable: true, alertBody: "", desiredKeys: ["phoneNumber"], options: .FiresOnRecordCreation) { (subscription, error) in
             if let completion = completion {
-                let success = subscription != nil
-                completion(success: success, error: error)
-                
+                let succcess = subscription != nil
+                completion(success: succcess, error: error)
             }
         }
+//        cloudKitManager.subscribe2("Event", predicate: predicate, subscriptionID: "allEvents", alertBody: "Placeholder for event body", options: .FiresOnRecordCreation) { (subscription, error) in
+//            if let completion = completion {
+//                let success = subscription != nil
+//                completion(success: success, error: error)
+//                
+//            }
+//        }
     }
     
     

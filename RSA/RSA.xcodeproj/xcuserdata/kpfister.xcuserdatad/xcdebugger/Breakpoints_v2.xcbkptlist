@@ -16,17 +16,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RSA/UserController.swift"
-            timestampString = "491335551.789549"
+            filePath = "RSA/AppDelegate.swift"
+            timestampString = "491419536.641203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "fetchUserRecords(_:completion:)"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSA/AppDelegate.swift"
+            timestampString = "491419741.232086"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSA/AppDelegate.swift"
+            timestampString = "491420035.971456"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloudKitManager.swift"
+            timestampString = "491420325.99331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "subscribe(_:predicate:subscriptionID:contentAvailable:alertBody:desiredKeys:options:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloudKitManager.swift"
+            timestampString = "491420398.360242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "subscribe(_:predicate:subscriptionID:contentAvailable:alertBody:desiredKeys:options:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSA.CloudKitManager.subscribe (Swift.String, predicate : __ObjC.NSPredicate, subscriptionID : Swift.String, contentAvailable : Swift.Bool, alertBody : Swift.Optional&lt;Swift.String&gt;, desiredKeys : Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, options : __C.CKSubscriptionOptions, completion : Swift.Optional&lt;(subscription : Swift.Optional&lt;__ObjC.CKSubscription&gt;, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "RSA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/CloudKitManager.swift"
+                  timestampString = "491420398.364739"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "252"
+                  endingLineNumber = "252"
+                  offsetFromSymbolStart = "648">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSA.CloudKitManager.(subscribe (Swift.String, predicate : __ObjC.NSPredicate, subscriptionID : Swift.String, contentAvailable : Swift.Bool, alertBody : Swift.Optional&lt;Swift.String&gt;, desiredKeys : Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, options : __C.CKSubscriptionOptions, completion : Swift.Optional&lt;(subscription : Swift.Optional&lt;__ObjC.CKSubscription&gt;, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "RSA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/CloudKitManager.swift"
+                  timestampString = "491420398.364952"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "254"
+                  endingLineNumber = "254"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

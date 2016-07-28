@@ -65,21 +65,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        print(userInfo)
+        guard let remoteNotificationDictionary = userInfo as? [String: NSObject] else {
+            return
+        }
+        let cloudKitNotification = CKQueryNotification(fromRemoteNotificationDictionary: remoteNotificationDictionary)
+        guard let notificationInfo = cloudKitNotification.recordFields as? [String: String] else {
+            return
+        }
+        
+        if let recordName = notificationInfo["recordName"] {
+            print(recordName)
+        }
         
         let eventAlert = UILocalNotification()
         
         eventAlert.alertTitle = "Place holder for title"
-        eventAlert.alertBody = "Place for body"
+        eventAlert.alertBody = "Place for body" // This is the local. This is what the user will see.
         eventAlert.fireDate = NSDate()
         
         application.scheduleLocalNotification(eventAlert)
         print("Alert has been sent... maybe... prolly not." )
         
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotifVC")
+        // DID RECEIVE LOCAL NOTIFICATION SHOULD HANDLE THIS
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("EventNotifVC")
         self.window?.rootViewController = destinationViewController
         self.window?.makeKeyAndVisible()
         
