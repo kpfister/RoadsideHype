@@ -65,12 +65,32 @@ class Event: SyncableObject, CloudKitManagedObject  {
         // Now to get my user with the event...
         
         // This is happening on the background thread and isn't getting called so the creator is never being set from the record
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            UserController.sharedInstance.userWithName(creator.recordID) { (user) in
-                self.creator = user
-            }
-        })
+        
+        if let creatorReference = record["user"] as? CKReference,
+            let user = getEventUser(creator.recordID) {
+            
+            self.creator = user
+        }
     }
     
+    
+    func getEventUser(recordID: CKRecordID) -> User? {
+        let group = dispatch_group_create()
+        
+        var userToReturn: User?
+        
+        dispatch_group_enter(group)
+        
+        UserController.sharedInstance.userWithName(recordID) { (user) in
+            
+            userToReturn = user
+            
+            dispatch_group_leave(group)
+        }
+        
+        dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, Int64(2*NSEC_PER_SEC)))
+        
+        return userToReturn
+    }
 }
 

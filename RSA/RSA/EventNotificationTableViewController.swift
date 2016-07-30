@@ -12,6 +12,9 @@ class EventNotificationTableViewController: UITableViewController {
     
     var event: Event? {
         didSet {
+            
+            let _ = view
+            
             updateViews()
         }
     }

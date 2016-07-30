@@ -114,19 +114,16 @@ class UserController {
     func userWithName(userRecordID: CKRecordID, completion: ((user: User?) -> Void)?) {
         
         cloudKitManager.fetchRecordWithID(userRecordID) { (record, error) in
-            if let  record = record {
-                if   let user = User(record: record) {
-                    
-                    if let  completion = completion {
-                        completion(user: user)
-                    }
-                }
+            if let record = record,
+                let user = User(record: record) {
                 
+                if let  completion = completion {
+                    completion(user: user)
+                }
             } else {
                 if let completion = completion {
                     completion(user: nil)
                 }
-                
             }
         }
     }

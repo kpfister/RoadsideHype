@@ -69,26 +69,30 @@ class User: SyncableObject, CloudKitManagedObject {
         record["rangeToTravel"] = rangeToTravel
         record["photoData"] = CKAsset(fileURL: temporaryPhotoURL)
         
-        
         return record
     }
     
     convenience required init?(record: CKRecord, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
-        guard let timestamp = record.creationDate,
-            let photoData = record["photoData"] as? CKAsset else {
-                return nil
+        
+        guard let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context),
+            let phoneNumber = record["phoneNumber"] as? String,
+            let username = record["username"] as? String else {
+                
+                fatalError("Error! CoreData failed to create an entity from entity description/ \(#function)")
         }
-        guard let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context) else {
-            fatalError("Error! CoreData failed to create an entity from entity description/ \(#function)")
-        }
+        
         self.init(entity: entity, insertIntoManagedObjectContext: context)
+        
         self.timestamp = timestamp
         self.recordIDData = NSKeyedArchiver.archivedDataWithRootObject(record.recordID)
+        self.username = username
+        self.phoneNumber = phoneNumber
         self.recordName = record.recordID.recordName
-        self.photoData = NSData(contentsOfURL: photoData.fileURL)
         
+        if let photoData = record["photoData"] as? CKAsset {
+            self.photoData = NSData(contentsOfURL: photoData.fileURL)
+        }
     }
-    
 }
 
 //End of Class
