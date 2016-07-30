@@ -83,7 +83,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="33"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkS-Dq-WTj">
-                                                            <rect key="frame" x="0.0" y="6" width="112" height="21"/>
+                                                            <rect key="frame" x="0.0" y="7" width="112" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -219,50 +219,16 @@
                                             <constraint firstAttribute="height" constant="50" id="a3J-aZ-fKT"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-qt-nUJ" userLabel="Request Help Image and Button">
-                                        <rect key="frame" x="0.0" y="50" width="580" height="406"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Button" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-Uy-PGj">
-                                                <rect key="frame" x="107" y="20" width="366" height="366"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="e3G-Uy-PGj" secondAttribute="height" multiplier="1:1" id="7CF-d8-EEB"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="A1e-jb-pNd"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H8-A7-7wZ">
-                                                <rect key="frame" x="107" y="20" width="366" height="366"/>
-                                                <connections>
-                                                    <action selector="requestButtonUnderImageTapped:" destination="sA8-iD-NOG" eventType="touchUpInside" id="QhF-6a-tYl"/>
-                                                    <segue destination="YXH-YB-6lI" kind="show" id="Yqu-GO-Qnz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="e3G-Uy-PGj" secondAttribute="bottom" constant="20" id="3Fm-Il-32W"/>
-                                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xLo-qt-nUJ" secondAttribute="top" constant="20" id="BiL-ev-AdD"/>
-                                            <constraint firstItem="7H8-A7-7wZ" firstAttribute="height" secondItem="e3G-Uy-PGj" secondAttribute="height" id="FGT-E9-I5A"/>
-                                            <constraint firstItem="7H8-A7-7wZ" firstAttribute="width" secondItem="e3G-Uy-PGj" secondAttribute="width" id="Gt8-oA-2jf"/>
-                                            <constraint firstItem="7H8-A7-7wZ" firstAttribute="centerY" secondItem="xLo-qt-nUJ" secondAttribute="centerY" id="OPj-Je-x0f"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="e3G-Uy-PGj" secondAttribute="trailing" constant="20" id="SaS-zm-y1d"/>
-                                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xLo-qt-nUJ" secondAttribute="leading" constant="20" id="jIk-N5-TP3"/>
-                                            <constraint firstItem="7H8-A7-7wZ" firstAttribute="centerX" secondItem="xLo-qt-nUJ" secondAttribute="centerX" id="rsv-u8-tjW"/>
-                                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="centerX" secondItem="xLo-qt-nUJ" secondAttribute="centerX" id="x0b-Yr-ZqS"/>
-                                            <constraint firstItem="e3G-Uy-PGj" firstAttribute="centerY" secondItem="xLo-qt-nUJ" secondAttribute="centerY" id="yTb-ia-dp3"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-0a-Rft">
-                                        <rect key="frame" x="0.0" y="456" width="580" height="60"/>
+                                        <rect key="frame" x="0.0" y="50" width="580" height="466"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-9T-7lM">
-                                                <rect key="frame" x="230.5" y="0.0" width="120" height="30"/>
-                                                <color key="backgroundColor" red="1" green="0.68972210909999998" blue="0.065023203330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-9T-7lM">
+                                                <rect key="frame" x="221" y="378" width="120" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="Zit-VQ-hnR"/>
                                                 </constraints>
-                                                <state key="normal" title="Request Help!">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                                <state key="normal" image="alertbtn"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="12"/>
                                                 </userDefinedRuntimeAttributes>
@@ -275,15 +241,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="5ex-E1-3ki"/>
-                                            <constraint firstItem="e5R-9T-7lM" firstAttribute="top" secondItem="KUx-0a-Rft" secondAttribute="top" id="6IF-pr-z3L"/>
-                                            <constraint firstItem="e5R-9T-7lM" firstAttribute="centerY" secondItem="KUx-0a-Rft" secondAttribute="centerY" id="M0E-q5-jTA"/>
-                                            <constraint firstItem="e5R-9T-7lM" firstAttribute="centerX" secondItem="KUx-0a-Rft" secondAttribute="centerX" id="k1C-IV-uNt"/>
+                                            <constraint firstItem="e5R-9T-7lM" firstAttribute="leading" secondItem="KUx-0a-Rft" secondAttribute="leading" constant="221" id="ioi-lL-uYy"/>
+                                            <constraint firstItem="e5R-9T-7lM" firstAttribute="bottom" secondItem="KUx-0a-Rft" secondAttribute="bottomMargin" id="wKl-8j-CaU"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="M0E-q5-jTA"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -315,7 +275,6 @@
                     <navigationItem key="navigationItem" title="Motorescue" id="NU8-Kj-DUH"/>
                     <connections>
                         <outlet property="requestHelp" destination="e5R-9T-7lM" id="9F5-pU-45r"/>
-                        <outlet property="requestHelpButtonUnderImage" destination="7H8-A7-7wZ" id="of6-1f-uMn"/>
                         <outlet property="userButtonUnderImage" destination="BeF-ff-yQ2" id="V7m-dt-GYJ"/>
                     </connections>
                 </viewController>
@@ -767,12 +726,12 @@ It's just as well my friend</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Button" width="162" height="162"/>
         <image name="Phone" width="22" height="26"/>
         <image name="Roadside" width="638" height="436"/>
+        <image name="alertbtn" width="80" height="80"/>
         <image name="defaultuser copy" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Yqu-GO-Qnz"/>
+        <segue reference="Kmu-j0-FFS"/>
     </inferredMetricsTieBreakers>
 </document>

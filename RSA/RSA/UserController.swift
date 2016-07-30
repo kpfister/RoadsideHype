@@ -17,13 +17,13 @@ class UserController {
     
     var isSynching: Bool = false
     
-
+    
     
     var currentUser: User? {
         let fetchRequest = NSFetchRequest(entityName: "User")
         let results = (try? Stack.sharedStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [User] ?? []
         return results.first ?? nil
-
+        
     }
     
     static let sharedInstance = UserController()
@@ -111,6 +111,25 @@ class UserController {
     
     //MARK: - Helper Fetches
     
+    func userWithName(userRecordID: CKRecordID, completion: ((user: User?) -> Void)?) {
+        
+        cloudKitManager.fetchRecordWithID(userRecordID) { (record, error) in
+            if let  record = record {
+                if   let user = User(record: record) {
+                    
+                    if let  completion = completion {
+                        completion(user: user)
+                    }
+                }
+                
+            } else {
+                if let completion = completion {
+                    completion(user: nil)
+                }
+                
+            }
+        }
+    }
     
     
     func fetchRecords(type: String, completion: (()-> Void)?) {
@@ -148,7 +167,7 @@ class UserController {
             }
             if let completion = completion, records = records {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(records: records)
+                    completion(records: records) // christen  and i added this to the main que.\\
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 })
             }

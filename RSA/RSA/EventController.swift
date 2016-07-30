@@ -39,7 +39,9 @@ class EventController {
     
     func createEvent(eventSummary: String, eventLongtitude: Float, eventLatitude: Float, eventCreationDate: NSDate, completion: (() -> Void)?) {
         
-        let event = Event(eventCreationDate: eventCreationDate, eventLatitude: eventLatitude, eventLongtitude: eventLongtitude, eventSummary: eventSummary)
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        
+        let event = Event(creator: currentUser, eventCreationDate: eventCreationDate, eventLatitude: eventLatitude, eventLongtitude: eventLongtitude, eventSummary: eventSummary)
         
         saveContext()
         
@@ -57,7 +59,8 @@ class EventController {
     }
     
     func retrieveEventForRecordID(recordID: CKRecordID, completion: (Event) -> Void) {
-        cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
+        
+        self.cloudKitManager.fetchRecordWithID(recordID) { (record, error) in
             if let error = error {
                 NSLog("Error fetching event for record ID \(recordID): \(error)")
                 return
@@ -71,19 +74,7 @@ class EventController {
         }
     }
     
-    //
-    //    func retreiveRequestForHelpEvent(completion: (event: Event?) -> Void) {
-    //        // check for current event id
-    //
-    //        guard let currentHelpRequestID = currentHelpRequestID else { completion(event: nil); return }
-    //        // loads the event with the id from cloud kit
-    //        let record = CKRecord(recordType: "User") // TODO: Actually get record from CloudKit (look at Timeline)
-    //        let event = Event(record: record)
-    //        completion(event: event)
-    //        // call completion passing in the event
-    //        // EventNotificationTVC will have this method in the Veiw did load
-    //
-    //    }
+    
     
     // I dont think we want an update or a delete function as you cannnot update or delete the event.
     
