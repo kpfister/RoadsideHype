@@ -20,22 +20,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSA/UserTableViewController.swift"
-            timestampString = "491547814.157885"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSA/UserTableViewController.swift"
             timestampString = "491547846.646253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -68,12 +52,12 @@
                   moduleName = "RSA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/RSA/UserTableViewController.swift"
-                  timestampString = "491549238.215452"
+                  timestampString = "491702051.713677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "3140">
+                  offsetFromSymbolStart = "4329">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -83,12 +67,12 @@
                   moduleName = "RSA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kpfister/Desktop/RoadsideHype/RSA/RSA/UserTableViewController.swift"
-                  timestampString = "491549238.215565"
+                  timestampString = "491702051.713837"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "52"
                   endingLineNumber = "52"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "25">
                </Location>
             </Locations>
          </BreakpointContent>
