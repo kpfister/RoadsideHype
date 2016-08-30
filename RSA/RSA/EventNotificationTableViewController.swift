@@ -78,6 +78,7 @@ class EventNotificationTableViewController: UITableViewController {
         imageView.contentMode = .ScaleAspectFill
         view.addSubview(imageView)
         view.addSubview(visualEffectView)
+        tableView.backgroundView = view
     }
 
     // MARK: - Table view data source
