@@ -21,21 +21,15 @@ class EventController {
     
     var currentHelpRequestID: CKRecordID?
     
-    // create a func to save a record id. that will take in the recordID from the notification and
     
     static let sharedInstance = EventController()
     
     init() {
         self.cloudKitManager = CloudKitManager()
-        
-        //        subscribeToNewEvents { (success, error) in
-        //            if success {
-        //                print("Succesfully subscribed to new events.")
-        //            }
-        //        }
-        
     }
-    // Youre CRUD Methods go here.
+    
+    
+    //MARK: - CRUD Methods.
     
     func createEvent(eventSummary: String, eventLongtitude: Float, eventLatitude: Float, eventCreationDate: NSDate, completion: (() -> Void)?) {
         
@@ -73,8 +67,6 @@ class EventController {
             }
         }
     }
-    
-    
     
     // I dont think we want an update or a delete function as you cannnot update or delete the event.
     
@@ -114,16 +106,7 @@ class EventController {
     }
     
     func checkForSubscription() {
-        //        cloudKitManager.unsubscribe("allPosts") { (subscriptionID, error) in
-        //
-        //        }
-        //        cloudKitManager.fetchSubscription("allEvents") { (subscription, error) in
-        //            print(subscription)
-        //        }
-        //        cloudKitManager.fetchSubscriptions { (subscriptions, error) in
-        //
-        //        }
-        
+        //May not need this.
     }
     
     //MARK: Subscriptions
@@ -138,21 +121,5 @@ class EventController {
                 completion(success: succcess, error: error)
             }
         }
-        //        cloudKitManager.subscribe2("Event", predicate: predicate, subscriptionID: "allEvents", alertBody: "Placeholder for event body", options: .FiresOnRecordCreation) { (subscription, error) in
-        //            if let completion = completion {
-        //                let success = subscription != nil
-        //                completion(success: success, error: error)
-        //                
-        //            }
-        //        }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }// End of class

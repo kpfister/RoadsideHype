@@ -35,8 +35,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        safetyTipLabel.text = "Safety Tip: 1. Let people know there’s something wrong.Find the hazard button in your car (t’s the big one with the red triangle on it) and put your hazard lights on. This’ll let people know you’ve got car issues and not just taking a little mid-trip snooze."
-
+        safetyTipLabel.text = "Safety Tip: 1. Let people know there’s something wrong. Find the hazard button in your car (it’s the big one with the red triangle on it) and put your hazard lights on."
+//navigationController!.navigationBar.barTintColor = UIColor.clearColor()
         
         let view = UIView(frame: self.view.bounds)
         //        let image = UIImage(named: "Roadside")
@@ -53,7 +53,8 @@ class MainViewController: UIViewController {
         self.view.addSubview(view)
         self.view.sendSubviewToBack(view)
         
-        
+//        requestHelpButtonUnderImage.layer.cornerRadius = requestHelpButtonUnderImage.frame.width / 2
+//        requestHelpButtonUnderImage.clipsToBounds = true
         //        userImageAndbuttonView.layer.cornerRadius = userImageAndbuttonView.frame.width / 2
         //        userImageAndbuttonView.clipsToBounds = true
         

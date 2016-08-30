@@ -66,8 +66,7 @@ class Event: SyncableObject, CloudKitManagedObject  {
         
         // This is happening on the background thread and isn't getting called so the creator is never being set from the record
         
-        if let creatorReference = record["user"] as? CKReference,
-            let user = getEventUser(creator.recordID) {
+        if let user = getEventUser(creator.recordID) {
             
             self.creator = user
         }

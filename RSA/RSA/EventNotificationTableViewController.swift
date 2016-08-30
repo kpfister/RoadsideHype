@@ -36,23 +36,20 @@ class EventNotificationTableViewController: UITableViewController {
     //MARK: Actions
     
     @IBAction func directionsToUserButtonTapped(sender: AnyObject) {
-//        
-//            let emergencyAlert = UIAlertController(title: "Call User", message: "Are you sure you want to call the user that needs help?", preferredStyle: .Alert)
-//            let dissmissAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//            let call911Action = UIAlertAction(title: "Call", style: .Default) { (action) in
-//                if let url = NSURL(string: "tel://\(user.phonenumber)" {
-//                    UIApplication.sharedApplication().openURL(url)
-//                }
-//            }
-//            emergencyAlert.addAction(dissmissAction)
-//            emergencyAlert.addAction(call911Action)
-//            self.presentViewController(emergencyAlert, animated: true, completion: nil)
-    
+        
     }
     
     @IBAction func callUserButtonTapped(sender: AnyObject) {
-        
-        
+        let callUserAlert = UIAlertController(title: "Call User", message: "Are you sure you want to call this user?", preferredStyle: .Alert)
+        let dismissCallUser = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let callUserAction = UIAlertAction(title: "Call", style: .Default) { (action) in
+            if let userPhoneURL = NSURL(string:"tel://\(self.userPhoneNumber.text!)") {
+                UIApplication.sharedApplication().openURL(userPhoneURL)
+            }
+        }
+        callUserAlert.addAction(dismissCallUser)
+        callUserAlert.addAction(callUserAction)
+        presentViewController(callUserAlert, animated: true, completion: nil)
     }
     
     

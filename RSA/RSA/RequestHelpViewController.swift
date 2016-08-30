@@ -9,10 +9,12 @@
 import UIKit
 import CloudKit
 
-class RequestHelpViewController: UIViewController {
+class RequestHelpViewController: UIViewController, UITextViewDelegate {
     
     var events: [Event] = []
     var users: [User] = []
+    
+    
     
     
     // I need to fetch all the records of type user and set it to my users array.
@@ -24,6 +26,8 @@ class RequestHelpViewController: UIViewController {
     @IBOutlet weak var helpSummaryTextView: UITextView!
     
     @IBOutlet weak var nineOneOneButton: UIButton!
+    
+    
     
     //MARK: Actions
     
@@ -61,7 +65,33 @@ class RequestHelpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        let blurEffect = UIBlurEffect(style: .Light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        visualEffectView.frame = self.view.bounds
+        let imageView = UIImageView(frame: view.frame)
+        imageView.image = UIImage(named: "snow car")
+        imageView.contentMode = .ScaleAspectFill
+        view.addSubview(imageView)
+        view.addSubview(visualEffectView)
+        view.sendSubviewToBack(visualEffectView)
+        view.sendSubviewToBack(imageView)
+
+        helpSummaryTextView.text = "Hi! My name is Karl and I could use some roadside assitance. It seems like I may have left my lights on and I need a jump. Would you be able to help me out? I only have about 10$ cash on me but it's yours if you help me! Thanks!!"
+        helpSummaryTextView.textColor = UIColor.darkGrayColor()
+        helpSummaryTextView.delegate = self
+        
+    }
+    func textViewDidBeginEditing(helpSummaryTextView: UITextView) {
+        if helpSummaryTextView.textColor == UIColor.darkGrayColor() {
+            helpSummaryTextView.text = nil
+            helpSummaryTextView.textColor = UIColor.cyanColor()
+        }
+    }
+    func textViewDidEndEditing(helpSummaryTextView: UITextView) {
+        if helpSummaryTextView.text.isEmpty {
+            helpSummaryTextView.text = "Placeholder"
+            helpSummaryTextView.textColor = UIColor.darkGrayColor()
+        }
     }
     
     override func didReceiveMemoryWarning() {
