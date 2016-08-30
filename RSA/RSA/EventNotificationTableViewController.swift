@@ -68,8 +68,16 @@ class EventNotificationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateViews()
+        let view = UIView(frame: self.view.bounds)
+        let blurEffect = UIBlurEffect(style: .Light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        visualEffectView.frame = self.view.bounds
+        let imageView = UIImageView(frame: view.frame)
+        imageView.image = UIImage(named: "snow car")
+        imageView.contentMode = .ScaleAspectFill
+        view.addSubview(imageView)
+        view.addSubview(visualEffectView)
     }
 
     // MARK: - Table view data source
